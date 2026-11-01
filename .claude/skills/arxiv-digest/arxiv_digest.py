@@ -1,23 +1,11 @@
 #!/usr/bin/env python3
-"""Read-only arXiv digest for the persistent research agent (Lab 4).
+"""Read-only arXiv research digest with abstracts and provenance."""
 
-Queries the public arXiv API for recent submissions matching a search string
-and prints a Markdown digest. No writes, no credentials, no third-party sites:
-this is the "one safe thing" a first scheduled run may do (Lecture 7, slide
-"minimum viable persistent research agent", step 2).
-
-Usage:
-  python3 arxiv_digest.py --query "cat:cond-mat.soft AND all:metamaterial" --days 2 --max 8
-  python3 arxiv_digest.py --query "all:\"physics-informed neural network\"" --max 5
-
-Output: Markdown, one bullet per paper, with title, first author, date and link.
-Every line in the digest comes from the API response; nothing is paraphrased here.
-The agent summarises on top of this — and must keep the links.
-Provenance line at the bottom: query, window, time fetched.
-"""
 import argparse
 import datetime as dt
+import re
 import sys
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -27,47 +15,156 @@ NS = {"a": "http://www.w3.org/2005/Atom"}
 
 
 def fetch(query: str, max_results: int):
-    params = {"search_query": query, "start": 0, "max_results": max_results,
-              "sortBy": "submittedDate", "sortOrder": "descending"}
+    params = {
+        "search_query": query,
+        "start": 0,
+        "max_results": max_results,
+        "sortBy": "submittedDate",
+        "sortOrder": "descending",
+    }
     url = API + "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(url, headers={"User-Agent": "ME-CE-AM-295-lab4-digest/1.0"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.read()
+    request = urllib.request.Request(
+        url,
+        headers={"User-Agent": "ME-CE-AM-295-lab4-digest/1.1"},
+    )
+    with urllib.request.urlopen(request, timeout=30) as response:
+        return response.read()
 
 
-def parse(xml_bytes: bytes):
+def clean(text):
+    return " ".join((text or "").split())
+
+
+def parse(xml_bytes):
     root = ET.fromstring(xml_bytes)
-    for e in root.findall("a:entry", NS):
-        title = " ".join(e.findtext("a:title", default="", namespaces=NS).split())
-        link = e.findtext("a:id", default="", namespaces=NS)
-        published = e.findtext("a:published", default="", namespaces=NS)[:10]
-        authors = [a.findtext("a:name", default="", namespaces=NS) for a in e.findall("a:author", NS)]
-        first = authors[0] if authors else "?"
-        more = f" et al." if len(authors) > 1 else ""
-        yield {"title": title, "link": link, "date": published, "author": first + more}
+
+    for entry in root.findall("a:entry", NS):
+        title = clean(entry.findtext("a:title", "", NS))
+        link = clean(entry.findtext("a:id", "", NS))
+        published = entry.findtext("a:published", "", NS)[:10]
+        abstract = clean(entry.findtext("a:summary", "", NS))
+
+        authors = [
+            clean(author.findtext("a:name", "", NS))
+            for author in entry.findall("a:author", NS)
+        ]
+
+        if not title or not link:
+            continue
+
+        paper_id = re.sub(
+            r"v\d+$", "",
+            link.rstrip("/").split("/")[-1],
+        )
+
+        if paper_id.startswith("errors"):
+            raise ValueError(f"arXiv API error: {abstract}")
+
+        yield {
+            "id": paper_id,
+            "title": title,
+            "link": link,
+            "date": published,
+            "author": (
+                authors[0] + (" et al." if len(authors) > 1 else "")
+                if authors else "Unknown"
+            ),
+            "abstract": abstract,
+        }
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--query", required=True, help="arXiv search_query string")
-    ap.add_argument("--days", type=int, default=2, help="only papers published in the last N days")
-    ap.add_argument("--max", type=int, default=8, help="max results to request")
-    a = ap.parse_args(argv)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--query",
+        action="append",
+        required=True,
+        help="arXiv query; repeat for multiple research tracks",
+    )
+    parser.add_argument(
+        "--days",
+        type=int,
+        default=2,
+        help="Publication lookback in days",
+    )
+    parser.add_argument(
+        "--max",
+        type=int,
+        default=8,
+        help="Maximum results per query",
+    )
+    args = parser.parse_args(argv)
 
-    since = dt.date.today() - dt.timedelta(days=a.days)
+    if args.days < 1 or not 1 <= args.max <= 100:
+        parser.error("--days must be positive and --max must be 1-100")
+
+    today = dt.date.today()
+    since = today - dt.timedelta(days=args.days)
+    papers = {}
+
     try:
-        entries = [p for p in parse(fetch(a.query, a.max)) if p["date"] >= since.isoformat()]
-    except Exception as exc:  # network or parse failure: say so, never invent papers
-        print(f"**arXiv digest failed**: {type(exc).__name__}: {exc}\n\nNo papers were retrieved.")
+        for index, query in enumerate(args.query):
+            if index:
+                time.sleep(3.2)
+
+            for paper in parse(fetch(query, args.max)):
+                if paper["date"] < since.isoformat():
+                    continue
+
+                if paper["id"] not in papers:
+                    paper["tracks"] = []
+                    papers[paper["id"]] = paper
+
+                papers[paper["id"]]["tracks"].append(index + 1)
+
+    except Exception as exc:
+        print(
+            f"**arXiv digest failed**: "
+            f"{type(exc).__name__}: {exc}\n\n"
+            "Retrieval incomplete. No results should be used."
+        )
         return 1
 
-    print(f"### arXiv digest — {dt.date.today().isoformat()}")
-    if not entries:
-        print(f"\nNo new submissions in the last {a.days} day(s) for `{a.query}`.")
-    for p in entries:
-        print(f"- **{p['title']}** — {p['author']} ({p['date']}). {p['link']}")
-    print(f"\n_Source: arXiv API · query `{a.query}` · window {a.days} d · "
-          f"fetched {dt.datetime.now().isoformat(timespec='minutes')}_")
+    selected = sorted(
+        papers.values(),
+        key=lambda paper: paper["date"],
+        reverse=True,
+    )
+
+    print(f"### arXiv candidate digest — {today.isoformat()}")
+    print(f"\nCandidates: {len(selected)}")
+
+    if not selected:
+        print("\nNo new matching submissions.")
+
+    for paper in selected:
+        tracks = ", ".join(map(str, paper["tracks"]))
+
+        print(
+            f"\n- **{paper['title']}** — "
+            f"{paper['author']} ({paper['date']}). "
+            f"{paper['link']}"
+        )
+        print(f"  - arXiv ID: `{paper['id']}`")
+        print(f"  - Search tracks: {tracks}")
+        print(f"  - Abstract: {paper['abstract']}")
+
+    timestamp = dt.datetime.now(dt.timezone.utc).isoformat(
+        timespec="minutes"
+    )
+
+    print(
+        f"\n_Source: arXiv API · "
+        f"queries: {len(args.query)} · "
+        f"window: {args.days} d · "
+        f"max/query: {args.max} · "
+        f"fetched: {timestamp}_"
+    )
+
+    print("\n_Queries:_")
+    for index, query in enumerate(args.query, 1):
+        print(f"\n{index}. `{query}`")
+
     return 0
 
 
