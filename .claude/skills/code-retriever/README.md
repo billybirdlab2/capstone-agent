@@ -27,7 +27,9 @@ Add to `.claude/settings.json` (the agent may run only the two retrieval scripts
 
 ```json
 "allow": [ "Bash(python3 .claude/skills/code-retriever/retrieve.py *)",
-           "Bash(python3 .claude/skills/code-retriever/check_citations.py *)" ],
+           "Bash(python3 .claude/skills/code-retriever/check_citations.py *)",
+           "Bash(.venv/bin/python3 .claude/skills/code-retriever/retrieve.py *)",
+           "Bash(.venv/bin/python3 .claude/skills/code-retriever/check_citations.py *)" ],
 "deny":  [ "Edit(corpus/**)", "Edit(index/**)", "WebFetch", "WebSearch" ]
 ```
 
@@ -37,8 +39,8 @@ Add to `.claude/settings.json` (the agent may run only the two retrieval scripts
 python3 .claude/skills/code-retriever/build_index.py --check            # Part A
 python3 .claude/skills/code-retriever/build_index.py                    # Part B (text-stream parser)
 python3 .claude/skills/code-retriever/build_index.py --parser layout    # if tables come out shredded
-python3 .claude/skills/code-retriever/retrieve.py --show "web thickness W10x49"
-python3 .claude/skills/code-retriever/check_citations.py --json '{"answer": "...", ...}'
+.venv/bin/python3 .claude/skills/code-retriever/retrieve.py --show "web thickness W10x49"   # agent and you; local only
+.venv/bin/python3 .claude/skills/code-retriever/check_citations.py --json '{"answer": "...", ...}'
 python3 .claude/skills/code-retriever/evaluate.py --mode embedding      # Part D.2
 python3 .claude/skills/code-retriever/evaluate.py --mode hybrid
 python3 .claude/skills/code-retriever/evaluate.py --mode keyword        # optional third row

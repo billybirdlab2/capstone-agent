@@ -1,0 +1,158 @@
+{
+ "mode": "hybrid",
+ "k": 5,
+ "parser": "text",
+ "embedder": "st",
+ "hits": 16,
+ "answerable": 19,
+ "hit_at_k": 0.8421052631578947,
+ "mrr": 0.5482456140350876,
+ "by_kind": {
+  "identifier": [
+   7,
+   9
+  ],
+  "paraphrase": [
+   9,
+   10
+  ]
+ },
+ "abstained": 5,
+ "not_in_corpus": 6,
+ "per_question": [
+  {
+   "id": "q02",
+   "kind": "identifier",
+   "hit": true,
+   "rank": 4,
+   "top1": "neurosymbolic_concept_learner:p001:01"
+  },
+  {
+   "id": "q03",
+   "kind": "identifier",
+   "hit": true,
+   "rank": 1,
+   "top1": "clevr:p002:04"
+  },
+  {
+   "id": "q04",
+   "kind": "identifier",
+   "hit": true,
+   "rank": 1,
+   "top1": "end_to_end_module_networks:p005:03"
+  },
+  {
+   "id": "q05",
+   "kind": "identifier",
+   "hit": true,
+   "rank": 1,
+   "top1": "visual_genome:p027:01"
+  },
+  {
+   "id": "q06",
+   "kind": "identifier",
+   "hit": false,
+   "rank": null,
+   "top1": "grounding_dino:p003:06"
+  },
+  {
+   "id": "q07",
+   "kind": "identifier",
+   "hit": true,
+   "rank": 4,
+   "top1": "segment_anything:p025:01"
+  },
+  {
+   "id": "q08",
+   "kind": "identifier",
+   "hit": false,
+   "rank": null,
+   "top1": "pope_object_hallucination:p007:03"
+  },
+  {
+   "id": "q09",
+   "kind": "identifier",
+   "hit": true,
+   "rank": 1,
+   "top1": "blip2:p001:01"
+  },
+  {
+   "id": "q10",
+   "kind": "identifier",
+   "hit": true,
+   "rank": 1,
+   "top1": "constrained_policy_optimization:p002:03"
+  },
+  {
+   "id": "q11",
+   "kind": "paraphrase",
+   "hit": true,
+   "rank": 3,
+   "top1": "popper_learning_from_failures:p024:02"
+  },
+  {
+   "id": "q12",
+   "kind": "paraphrase",
+   "hit": true,
+   "rank": 2,
+   "top1": "neurosymbolic_concept_learner:p010:01"
+  },
+  {
+   "id": "q13",
+   "kind": "paraphrase",
+   "hit": true,
+   "rank": 1,
+   "top1": "clevr:p002:01"
+  },
+  {
+   "id": "q14",
+   "kind": "paraphrase",
+   "hit": true,
+   "rank": 4,
+   "top1": "end_to_end_module_networks:p003:01"
+  },
+  {
+   "id": "q15",
+   "kind": "paraphrase",
+   "hit": true,
+   "rank": 3,
+   "top1": "grounding_dino:p002:03"
+  },
+  {
+   "id": "q16",
+   "kind": "paraphrase",
+   "hit": true,
+   "rank": 1,
+   "top1": "segment_anything:p005:04"
+  },
+  {
+   "id": "q17",
+   "kind": "paraphrase",
+   "hit": true,
+   "rank": 4,
+   "top1": "pope_object_hallucination:p001:04"
+  },
+  {
+   "id": "q18",
+   "kind": "paraphrase",
+   "hit": true,
+   "rank": 1,
+   "top1": "hallusionbench:p003:05"
+  },
+  {
+   "id": "q19",
+   "kind": "paraphrase",
+   "hit": false,
+   "rank": null,
+   "top1": "spatialvlm:p003:02"
+  },
+  {
+   "id": "q20",
+   "kind": "paraphrase",
+   "hit": true,
+   "rank": 4,
+   "top1": "visual_instruction_tuning:p002:01"
+  }
+ ],
+ "when": "20261031-233110"
+}

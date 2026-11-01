@@ -20,7 +20,12 @@ There are two places the agent runs, and they are enforced differently:
 - From `code-retriever`, run only `retrieve.py` and `check_citations.py`; both only
   read `index/`.
   [allow: `Bash(python3 .claude/skills/code-retriever/retrieve.py *)`,
-  `Bash(python3 .claude/skills/code-retriever/check_citations.py *)`]
+  `Bash(python3 .claude/skills/code-retriever/check_citations.py *)`,
+  `Bash(.venv/bin/python3 .claude/skills/code-retriever/retrieve.py *)`,
+  `Bash(.venv/bin/python3 .claude/skills/code-retriever/check_citations.py *)`]
+  The working commands are the `.venv/bin/python3` forms, run from the repository
+  root; the system `python3` lacks the dependencies. These rules allow only these two
+  scripts, not `.venv/bin/python3` in general.
 - Read anything in this repository; write in `memory/` and `digests/`.
   [allow: `Edit(memory/**)`, `Edit(digests/**)`]
 - Commit on a `claude/` branch.  [allow: `git add`, `git commit`]
@@ -43,8 +48,9 @@ There are two places the agent runs, and they are enforced differently:
   The corpus is limited to sources whose licence or terms permit that use;
   documents that may not be shared with a third-party model provider do not go
   in `corpus/`.
-- **Local only.** Because the index is not in the repository, the retriever runs
-  on the owner's machine only — never in a cloud routine.
+- **Local only.** Because the index and the `.venv/` it runs in are not in the
+  repository (both git-ignored), the retriever runs on the owner's machine only —
+  never in a cloud routine.
 - **Citation validation.** Every answer about a code, standard or paper follows
   retrieve → Grounded JSON → `check_citations.py`. PASS means *grounded*, not
   *correct*. If a citation still FAILs after two retries, the agent reports the

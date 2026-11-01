@@ -16,7 +16,9 @@
       "Bash(gh pr view *)",
       "Bash(gh pr list *)",
       "Bash(python3 .claude/skills/code-retriever/retrieve.py *)",
-      "Bash(python3 .claude/skills/code-retriever/check_citations.py *)"
+      "Bash(python3 .claude/skills/code-retriever/check_citations.py *)",
+      "Bash(.venv/bin/python3 .claude/skills/code-retriever/retrieve.py *)",
+      "Bash(.venv/bin/python3 .claude/skills/code-retriever/check_citations.py *)"
     ],
     "ask": [
       "Bash(git push *)",
