@@ -11,7 +11,10 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Edit(memory/**)",
-      "Edit(digests/**)"
+      "Edit(digests/**)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr list *)"
     ],
     "ask": [
       "Bash(git push *)",
@@ -29,7 +32,9 @@
       "Bash(git push --force *)",
       "Read(./.env)",
       "Read(./.env.*)",
-      "Read(~/.ssh/**)"
+      "Read(~/.ssh/**)",
+      "Bash(gh pr merge *)",
+      "Bash(gh repo delete *)"
     ],
     "disableBypassPermissionsMode": "disable"
   }
