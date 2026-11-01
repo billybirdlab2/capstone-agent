@@ -14,7 +14,9 @@
       "Edit(digests/**)",
       "Bash(gh pr create *)",
       "Bash(gh pr view *)",
-      "Bash(gh pr list *)"
+      "Bash(gh pr list *)",
+      "Bash(python3 .claude/skills/code-retriever/retrieve.py *)",
+      "Bash(python3 .claude/skills/code-retriever/check_citations.py *)"
     ],
     "ask": [
       "Bash(git push *)",
@@ -34,7 +36,11 @@
       "Read(./.env.*)",
       "Read(~/.ssh/**)",
       "Bash(gh pr merge *)",
-      "Bash(gh repo delete *)"
+      "Bash(gh repo delete *)",
+      "Edit(corpus/**)",
+      "Edit(index/**)",
+      "WebFetch",
+      "WebSearch"
     ],
     "disableBypassPermissionsMode": "disable"
   }
