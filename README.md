@@ -38,3 +38,10 @@ python3 .claude/skills/beam-tools/beam_tools.py check --span-ft 20 --w-klf 0.5 -
 ```
 
 Full walkthrough: the Lab 4 tutorial (Claude Code edition), Parts A–H.
+
+## Lab Report 2
+
+- [Lab Report 2](reports/Lab_Report_2_William_Welch.pdf)
+- [Reproduction instructions](reports/README_Lab5_Reproduction.md)
+- [Lab 5 evaluation analysis](reports/lab5-final-analysis.md)
+- [Research plan](reports/Research_Plan.md)

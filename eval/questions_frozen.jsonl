@@ -1,0 +1,25 @@
+{"id": "q01", "kind": "identifier", "question": "In the Popper paper, what is the expanded name of the ILP approach abbreviated LFF?"}
+{"id": "q02", "kind": "identifier", "question": "What component of the Neuro-Symbolic Concept Learner converts a natural-language question into an executable symbolic program?"}
+{"id": "q03", "kind": "identifier", "question": "Which four object-property families are systematically varied in CLEVR scenes?"}
+{"id": "q04", "kind": "identifier", "question": "What kind of learning signal is used to train the policy that chooses module layouts in End-to-End Module Networks?"}
+{"id": "q05", "kind": "identifier", "question": "In Visual Genome, what three elements constitute an annotated relationship between two objects?"}
+{"id": "q06", "kind": "identifier", "question": "What language-encoding architecture does Grounding DINO use to represent the input text?"}
+{"id": "q07", "kind": "identifier", "question": "What is the name of the large segmentation dataset introduced by Segment Anything?"}
+{"id": "q08", "kind": "identifier", "question": "What are the three strategies POPE uses to select absent objects for negative object-presence questions?"}
+{"id": "q09", "kind": "identifier", "question": "What is the name of the trainable bridging component between BLIP-2’s frozen image encoder and its language model?"}
+{"id": "q10", "kind": "identifier", "question": "What formal framework does Constrained Policy Optimization use to express reward optimization under cost limits?"}
+{"id": "q11", "kind": "paraphrase", "question": "When searching for a correct logic program, how does Popper prioritize compact explanations rather than simply accepting an arbitrarily complex consistent program?"}
+{"id": "q12", "kind": "paraphrase", "question": "How can a system trained on visual concepts and question answering handle new combinations of familiar objects, attributes, or relations without retraining a separate classifier for each combination?"}
+{"id": "q13", "kind": "paraphrase", "question": "Why was CLEVR deliberately generated with controlled objects, questions, and answers instead of relying only on naturally collected image-question pairs?"}
+{"id": "q14", "kind": "paraphrase", "question": "When a visual question requires several reasoning operations, how can End-to-End Module Networks learn an appropriate computation sequence using supervision from final answers?"}
+{"id": "q15", "kind": "paraphrase", "question": "If a safety engineer provides a novel equipment description as text, how does Grounding DINO try to localize matching image regions without retraining a closed-set detector for that equipment type?"}
+{"id": "q16", "kind": "paraphrase", "question": "How does Segment Anything’s annotation workflow scale from hands-on human annotation toward producing a much larger collection of masks?"}
+{"id": "q17", "kind": "paraphrase", "question": "Why can asking a vision-language model direct yes/no questions about whether objects are present reveal hallucination behavior that broad caption scoring may overlook?"}
+{"id": "q18", "kind": "paraphrase", "question": "Why does HallusionBench distinguish errors caused by misleading visual perception from those caused by a model relying on language priors or unsupported assumptions?"}
+{"id": "q19", "kind": "paraphrase", "question": "How can depth estimates and object-centered image annotations be converted into training signals for relative position and physical-scale reasoning?"}
+{"id": "q20", "kind": "paraphrase", "question": "What purpose do multi-turn or complex-reasoning visual instructions serve beyond basic image captions when tuning an assistant to follow requests about images?"}
+{"id": "q21", "kind": "not_in_corpus", "question": "Which candidate grounding model achieved the highest verified pixel-level mask IoU on our private HELIOS industrial-safety held-out set on October 31, 2026?"}
+{"id": "q22", "kind": "not_in_corpus", "question": "Which specific frame identifier in our internal industrial video collection had the highest false-positive hazard score in the October 2026 campaign?"}
+{"id": "q23", "kind": "not_in_corpus", "question": "What predicate-confidence acceptance threshold did our lab approve for its October 2026 industrial-safety grounding gate?"}
+{"id": "q24", "kind": "not_in_corpus", "question": "How many private October 2026 industrial-video annotations did our project team manually approve for deployment?"}
+{"id": "q25", "kind": "not_in_corpus", "question": "Which exact safety-rule revision identifier did our project team approve during its October 31, 2026 research review?"}

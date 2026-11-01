@@ -1,0 +1,11 @@
+{
+  "status": "questions_frozen_answers_not_yet_verified",
+  "question_sha256": "9d6b0883cbaf1c0d44976f183c94fc72d3824c90902d4e1153cca66a82fd8d8f",
+  "question_count": 25,
+  "category_counts": {
+    "identifier": 10,
+    "paraphrase": 10,
+    "not_in_corpus": 5
+  },
+  "created_at": "2026-10-31T22:59:22.834847"
+}

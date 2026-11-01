@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Learning programs by learning from failures",
+    "edition": "2020; arXiv v1",
+    "source": "https://arxiv.org/abs/2005.02259v1",
+    "licence": "licensed",
+    "file": "popper_learning_from_failures.pdf"
+  },
+  {
+    "name": "The Neuro-Symbolic Concept Learner: Interpreting Scenes, Words, and Sentences From Natural Supervision",
+    "edition": "2019; arXiv v1",
+    "source": "https://arxiv.org/abs/1904.12584v1",
+    "licence": "licensed",
+    "file": "neurosymbolic_concept_learner.pdf"
+  },
+  {
+    "name": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
+    "edition": "2016; arXiv v1",
+    "source": "https://arxiv.org/abs/1612.06890v1",
+    "licence": "licensed",
+    "file": "clevr.pdf"
+  },
+  {
+    "name": "Learning to Reason: End-to-End Module Networks for Visual Question Answering",
+    "edition": "2017; arXiv v1",
+    "source": "https://arxiv.org/abs/1704.05526v1",
+    "licence": "licensed",
+    "file": "end_to_end_module_networks.pdf"
+  },
+  {
+    "name": "Visual Genome: Connecting Language and Vision Using Crowdsourced Dense Image Annotations",
+    "edition": "2016; arXiv v1",
+    "source": "https://arxiv.org/abs/1602.07332v1",
+    "licence": "licensed",
+    "file": "visual_genome.pdf"
+  },
+  {
+    "name": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection",
+    "edition": "2023; arXiv v1",
+    "source": "https://arxiv.org/abs/2303.05499v1",
+    "licence": "licensed",
+    "file": "grounding_dino.pdf"
+  },
+  {
+    "name": "Segment Anything",
+    "edition": "2023; arXiv v1",
+    "source": "https://arxiv.org/abs/2304.02643v1",
+    "licence": "licensed",
+    "file": "segment_anything.pdf"
+  },
+  {
+    "name": "Evaluating Object Hallucination in Large Vision-Language Models",
+    "edition": "2023; arXiv v1",
+    "source": "https://arxiv.org/abs/2305.10355v1",
+    "licence": "licensed",
+    "file": "pope_object_hallucination.pdf"
+  },
+  {
+    "name": "HallusionBench: An Advanced Diagnostic Suite for Entangled Language Hallucination and Visual Illusion in Large Vision-Language Models",
+    "edition": "2023; arXiv v1",
+    "source": "https://arxiv.org/abs/2310.14566v1",
+    "licence": "licensed",
+    "file": "hallusionbench.pdf"
+  },
+  {
+    "name": "Visual Instruction Tuning",
+    "edition": "2023; arXiv v1",
+    "source": "https://arxiv.org/abs/2304.08485v1",
+    "licence": "licensed",
+    "file": "visual_instruction_tuning.pdf"
+  },
+  {
+    "name": "BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models",
+    "edition": "2023; arXiv v1",
+    "source": "https://arxiv.org/abs/2301.12597v1",
+    "licence": "licensed",
+    "file": "blip2.pdf"
+  },
+  {
+    "name": "Constrained Policy Optimization",
+    "edition": "2017; arXiv v1",
+    "source": "https://arxiv.org/abs/1705.10528v1",
+    "licence": "licensed",
+    "file": "constrained_policy_optimization.pdf"
+  },
+  {
+    "name": "SpatialVLM: Endowing Vision-Language Models with Spatial Reasoning Capabilities",
+    "edition": "2024; arXiv v1",
+    "source": "https://arxiv.org/abs/2401.12168v1",
+    "licence": "licensed",
+    "file": "spatialvlm.pdf"
+  }
+]

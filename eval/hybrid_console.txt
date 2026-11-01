@@ -1,0 +1,37 @@
+mode=hybrid  k=5  parser=text  embedder=st  chunks=801
+
+  id     kind            hit@5  rank  top-1 chunk
+  q02    identifier      hit    4     neurosymbolic_concept_learner:p001:01
+  q03    identifier      hit    1     clevr:p002:04
+  q04    identifier      hit    1     end_to_end_module_networks:p005:03
+  q05    identifier      hit    1     visual_genome:p027:01
+  q06    identifier      MISS   -     grounding_dino:p003:06
+  q07    identifier      hit    4     segment_anything:p025:01
+  q08    identifier      MISS   -     pope_object_hallucination:p007:03
+  q09    identifier      hit    1     blip2:p001:01
+  q10    identifier      hit    1     constrained_policy_optimization:p002:03
+  q11    paraphrase      hit    3     popper_learning_from_failures:p024:02
+  q12    paraphrase      hit    2     neurosymbolic_concept_learner:p010:01
+  q13    paraphrase      hit    1     clevr:p002:01
+  q14    paraphrase      hit    4     end_to_end_module_networks:p003:01
+  q15    paraphrase      hit    3     grounding_dino:p002:03
+  q16    paraphrase      hit    1     segment_anything:p005:04
+  q17    paraphrase      hit    4     pope_object_hallucination:p001:04
+  q18    paraphrase      hit    1     hallusionbench:p003:05
+  q19    paraphrase      MISS   -     spatialvlm:p003:02
+  q20    paraphrase      hit    4     visual_instruction_tuning:p002:01
+
+hit@5: 16/19 = 0.84    (MRR 0.55)
+  identifier      7/9
+  paraphrase      9/10
+
+not-in-corpus questions (6), one full-pipeline run each:
+  q01: PASS
+  q21: ABSTAIN
+  q22: ABSTAIN
+  q23: ABSTAIN
+  q24: ABSTAIN
+  q25: ABSTAIN
+abstained: 5/6
+
+saved: eval/results_hybrid.json
