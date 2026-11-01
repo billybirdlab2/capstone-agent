@@ -5,3 +5,13 @@
 # Python bytecode
 __pycache__/
 *.pyc
+
+# Python virtual environment
+.venv/
+
+# code-retriever (Lab 5): licensed/internal documents and derived data stay local.
+# Only corpus/manifest.json is committed.
+corpus/*
+!corpus/manifest.json
+index/
+eval/runs/
