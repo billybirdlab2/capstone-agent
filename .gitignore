@@ -15,3 +15,10 @@ corpus/*
 !corpus/manifest.json
 index/
 eval/runs/
+
+# Local environment and credential files
+.env
+.env.*
+*.pem
+*.key
+.python-version

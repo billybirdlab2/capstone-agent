@@ -1,6 +1,6 @@
 ---
 name: code-retriever
-description: Look up what this project's own documents say — design codes and standards, the papers the method rests on, lab reports and datasheets in corpus/ — and answer with a citation a script checks. Use it for ANY question about a code value, clause, table, limit, property, or a claim from a paper in the corpus. EDIT THIS SENTENCE to name your corpus, e.g. "The corpus holds AISC 360-22 Ch. F, ASCE 7-22 Ch. 12 and our lab's tensile-test protocol v3."
+description: Look up what this project's own documents say — the papers and standards the capstone method rests on, in corpus/ — and answer with a citation a script checks. Use it for ANY question about a claim, result, definition, method, table, limit or clause from a document in the corpus. The corpus covers vision-language models, visual grounding, neuro-symbolic reasoning, inductive logic programming (ILP), predicate invention, industrial safety, and robotic safety.
 allowed-tools: Bash(python3 ${CLAUDE_SKILL_DIR}/retrieve.py *), Bash(python3 ${CLAUDE_SKILL_DIR}/check_citations.py *)
 ---
 

@@ -34,10 +34,17 @@ There are two places the agent runs, and they are enforced differently:
   quoted or cited through the retriever.
 - **Licensing.** Licensed and internal documents stay on the owner's machine:
   corpus PDFs and `index/` are git-ignored, and only `corpus/manifest.json` is
-  committed. Quotes are at most 25 words. Embeddings are computed locally
-  (`BAAI/bge-small-en-v1.5`, downloaded once by the owner); document text never
-  leaves the computer. Because the index is not in the repository, the retriever
-  runs locally only — never in a cloud routine.
+  committed. Quotes are at most 25 words.
+- **What stays local, and what does not.** Parsing, chunking, indexing and
+  embedding run on the owner's machine (`BAAI/bge-small-en-v1.5`, downloaded once
+  by the owner); the corpus files and `index/` are never uploaded by these steps.
+  However, the passages `retrieve.py` returns are read by Claude Code and are
+  therefore transmitted to the model provider (Anthropic) as part of the session.
+  The corpus is limited to sources whose licence or terms permit that use;
+  documents that may not be shared with a third-party model provider do not go
+  in `corpus/`.
+- **Local only.** Because the index is not in the repository, the retriever runs
+  on the owner's machine only — never in a cloud routine.
 - **Citation validation.** Every answer about a code, standard or paper follows
   retrieve → Grounded JSON → `check_citations.py`. PASS means *grounded*, not
   *correct*. If a citation still FAILs after two retries, the agent reports the
