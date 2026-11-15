@@ -1,0 +1,22 @@
+{
+  "action": "native",
+  "case": "R08",
+  "counts": {
+    "category_aware_tp": 2,
+    "fn": 12,
+    "gold_objects": 15,
+    "matched_correct_category": 2,
+    "pixel_mask_comparisons": 0,
+    "predictions": 49,
+    "tp": 3
+  },
+  "coverage": "DONE",
+  "geometry": "native_vlm_boxes",
+  "layer": "raw_vlm:qwen3vl32b",
+  "review_frame": 22,
+  "scene": "clip_b2afbf183ec6582616d2",
+  "split": "development",
+  "sum_matched_box_iou": 1.8770726057617209,
+  "video_frame": 22,
+  "video_id": "a5aad3a325ae878944869c85"
+}

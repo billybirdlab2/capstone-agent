@@ -17,3 +17,11 @@ Popper is an implementation of our learning from failures id ea9. Popper works i
 The chunk retains the generate–test–constrain description and document/edition/section/page metadata, but contains PDF extraction artifacts such as split words. It is a prose chunk, not evidence that numerical tables were preserved. The evaluation retained the text-parser index; no layout-parser comparison is claimed. The successful citation-checking test matched the stored extraction, which alone does not validate its semantic interpretation.
 
 This note was prepared from the uploaded index. The student must inspect the cited original PDF page before recording personal confirmation in LOG.md.
+## 2026-11-15 — Lab Report 3 (option A: grounding-route decision demo)
+- 17:37Z: committed experiment card + unchanged demo package (helios-agent d5df638); success criterion = agent Gold recall > always-native on 8 dev frames.
+- 17:40:53–17:41:37Z: ran `python3 run_demo.py route --model claude-opus-5-5` in my terminal (Claude Code CLI 2.1.325; 8 calls, USD 0.23).
+  Choices R01 native, R02 native, R03 dino, R04 sam, R05 native, R06 native, R07 sam, R08 sam.
+- Result (IoU ≥ 0.50, 132 Gold): agent 23/132 vs always-native 19/132; always-SAM 22/132; post-hoc rule 23/132 (no advantage over the rule shown).
+- Audit (lab3_route_demo/report/LAB3_EVIDENCE_AUDIT.md): 8/8 decision→receipt chains PASS; metrics reproduced from raw boxes with two matchers;
+  4 native rows differ from archive in summed IoU by ≤ 6.9e-4 (cause unverified); R03 DINO prompt provenance unverified.
+- Blocked/next: repeated runs, frozen rule baseline, held-out evaluation, category consistency, SAM 3 route, GPU-cost measurement.

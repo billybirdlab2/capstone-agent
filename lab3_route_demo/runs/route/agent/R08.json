@@ -1,0 +1,28 @@
+{
+  "action": "sam",
+  "cached_lane_reads": 1,
+  "case": "R08",
+  "committed_utc": "2026-11-15T17:41:37.908760+00:00",
+  "mode": "agent",
+  "observation": {
+    "case": "R08",
+    "initial_native": {
+      "emitted_boxes": 49,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 29,
+        "entity_errors": 2,
+        "entity_grounded": 49
+      }
+    },
+    "review_frame": 22,
+    "scene": "clip_b2afbf183ec6582616d2",
+    "split": "development",
+    "video_frame": 22,
+    "video_id": "a5aad3a325ae878944869c85"
+  },
+  "reason": "Native grounded all 49 entities with only 2 errors, so coverage looks good, but counts don't show box precision and 29 entities exceed DINO's 20-entity prompt limit, so refining Qwen's boxes with SAM is the best bet for keeping coverage while improving localization without the truncation risk of the DINO path.",
+  "result_sha256": "3af2a4df99de4a67b6ef810c66d455a64241711a4a98e04e1bed2ef928a85007",
+  "run": "agent",
+  "stop_state": "accepted_minimum_evidence"
+}

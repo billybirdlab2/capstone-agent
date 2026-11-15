@@ -1,0 +1,11 @@
+{
+  "mode": "fixed",
+  "source": {
+    "archive": "DYLAN_ALL_BRANCHES_BOX_SCORES.zip",
+    "archive_sha256": "502274aacbc211f6d4902acdacdef1bea3f35dad93fa1898e13ff984e2715722",
+    "library_file_id": "libfile_83feacd2e88c8191bb1d443974f8a595",
+    "member": "frame_outcomes.csv",
+    "member_sha256": "f505e659f830845dcb360675f60c18483becebd5d01b1ac0ca4052d017548e67",
+    "underlying_video_campaign": "recovery_20261008_172809_PbxI6G"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "action": "sam",
+  "cached_lane_reads": 1,
+  "case": "R07",
+  "committed_utc": "2026-11-15T17:41:32.460205+00:00",
+  "mode": "agent",
+  "observation": {
+    "case": "R07",
+    "initial_native": {
+      "emitted_boxes": 52,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 32,
+        "entity_errors": 2,
+        "entity_grounded": 52
+      }
+    },
+    "review_frame": 27,
+    "scene": "clip_585e95032c6b458b4e36",
+    "split": "development",
+    "video_frame": 27,
+    "video_id": "1495fc86117ad5b436889d91"
+  },
+  "reason": "Native grounded all 52 entities but 32 exceeded the 20-entity prompt limit and 2 errored, which suggests a dense scene where Qwen's boxes may be loose, so Qwen\u2192SAM keeps Qwen's coverage while tightening box localization; box quality is still unverified and the DINO stage was not chosen because re-detection could drop entities.",
+  "result_sha256": "f08a49d8b0b7cfde2cc59a48bb46ff808a1f6c8bd242551bb8aaba7cc818c3ce",
+  "run": "agent",
+  "stop_state": "accepted_minimum_evidence"
+}

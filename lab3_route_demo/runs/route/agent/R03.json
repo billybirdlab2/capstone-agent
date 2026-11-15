@@ -1,0 +1,28 @@
+{
+  "action": "dino",
+  "cached_lane_reads": 1,
+  "case": "R03",
+  "committed_utc": "2026-11-15T17:41:04.872771+00:00",
+  "mode": "agent",
+  "observation": {
+    "case": "R03",
+    "initial_native": {
+      "emitted_boxes": 0,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 0,
+        "entity_errors": 0,
+        "entity_grounded": 0
+      }
+    },
+    "review_frame": 1,
+    "scene": "clip_b2afbf183ec6582616d2",
+    "split": "development",
+    "video_frame": 1,
+    "video_id": "a5aad3a325ae878944869c85"
+  },
+  "reason": "Native Qwen32B emitted 0 boxes with 0 entities grounded and no errors, so it covers nothing and Qwen\u2192SAM would likely have no Qwen boxes to refine; DINO\u2192SAM is the only option with an independent detector, though zero grounded entities could also mean the frame has nothing to ground, so box quality is unverified until the checker runs.",
+  "result_sha256": "6dfb74563549cfdd2eef12aeaf7caa51c1672f49868e9d244eebf8d9f11621e4",
+  "run": "agent",
+  "stop_state": "accepted_minimum_evidence"
+}

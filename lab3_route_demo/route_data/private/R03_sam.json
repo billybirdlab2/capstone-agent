@@ -1,0 +1,22 @@
+{
+  "action": "sam",
+  "case": "R03",
+  "counts": {
+    "category_aware_tp": 0,
+    "fn": 19,
+    "gold_objects": 19,
+    "matched_correct_category": 0,
+    "pixel_mask_comparisons": 0,
+    "predictions": 0,
+    "tp": 0
+  },
+  "coverage": "DONE",
+  "geometry": "sam_mask_derived_boxes",
+  "layer": "sam_joint:qwen3vl32b",
+  "review_frame": 1,
+  "scene": "clip_b2afbf183ec6582616d2",
+  "split": "development",
+  "sum_matched_box_iou": 0.0,
+  "video_frame": 1,
+  "video_id": "a5aad3a325ae878944869c85"
+}

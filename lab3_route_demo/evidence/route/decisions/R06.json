@@ -1,0 +1,80 @@
+{
+  "case": "R06",
+  "observation": {
+    "case": "R06",
+    "initial_native": {
+      "emitted_boxes": 1,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 0,
+        "entity_errors": 0,
+        "entity_grounded": 1
+      }
+    },
+    "review_frame": 31,
+    "scene": "clip_0c8b65e1d5cd5522fdbe",
+    "split": "development",
+    "video_frame": 31,
+    "video_id": "52f825c46c5830a45738bb97"
+  },
+  "prompt": "Choose which cached grounding configuration to use for this Dylan development frame. 'native' keeps Qwen32B, 'sam' uses Qwen→SAM, and 'dino' uses Qwen→DINO→SAM. The goal is to cover reviewed objects with correctly grounded boxes. You only see native output counts and generator diagnostics. Make one decision with the information available. Counts alone do not establish box quality.\nYou control one local choose tool. Use only this observation. Return exactly one JSON object with case, choice, reason. The value of choice must be one of the allowed IDs. Write one sentence identifying the evidence or uncertainty behind your action. The executor will commit the choice, run the independent checker and stop this case.\n\n{\n  \"case\": \"R06\",\n  \"observation\": {\n    \"case\": \"R06\",\n    \"initial_native\": {\n      \"emitted_boxes\": 1,\n      \"generator_counts\": {\n        \"anchors_entity_stage_failed\": 0,\n        \"entities_above_prompt_limit_20\": 0,\n        \"entity_errors\": 0,\n        \"entity_grounded\": 1\n      }\n    },\n    \"review_frame\": 31,\n    \"scene\": \"clip_0c8b65e1d5cd5522fdbe\",\n    \"split\": \"development\",\n    \"video_frame\": 31,\n    \"video_id\": \"52f825c46c5830a45738bb97\"\n  },\n  \"allowed_choices\": [\n    \"native\",\n    \"sam\",\n    \"dino\"\n  ]\n}",
+  "choice": "native",
+  "reason": "Native Qwen32B grounded its single entity with no stage failures, errors, or prompt-limit overflow, so there is no diagnostic evidence that SAM or DINO refinement is needed, though one box does not tell us whether all reviewed objects are covered or whether the box is accurate.",
+  "raw_response": "```json\n{\"case\": \"R06\", \"choice\": \"native\", \"reason\": \"Native Qwen32B grounded its single entity with no stage failures, errors, or prompt-limit overflow, so there is no diagnostic evidence that SAM or DINO refinement is needed, though one box does not tell us whether all reviewed objects are covered or whether the box is accurate.\"}\n```",
+  "model_metadata": {
+    "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2613,
+      "cache_read_input_tokens": 1223,
+      "output_tokens": 224,
+      "output_tokens_details": {
+        "thinking_tokens": 103
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 2613,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 224,
+          "cache_read_input_tokens": 1223,
+          "cache_creation_input_tokens": 2613,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2613
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "duration_ms": 3575,
+    "total_cost_usd": 0.0256366,
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 224,
+        "cacheReadInputTokens": 1223,
+        "cacheCreationInputTokens": 2613,
+        "webSearchRequests": 0,
+        "costUSD": 0.0256366,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 103,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 2613,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  }
+}

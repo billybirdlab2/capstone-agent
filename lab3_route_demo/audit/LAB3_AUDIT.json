@@ -1,0 +1,2742 @@
+{
+ "generated_by": "audit/audit_lab3.py",
+ "A": {
+  "cases": [
+   {
+    "case": "R01",
+    "observation_seen": {
+     "emitted_boxes": 1,
+     "generator_counts": {
+      "anchors_entity_stage_failed": 0,
+      "entities_above_prompt_limit_20": 0,
+      "entity_errors": 0,
+      "entity_grounded": 1
+     }
+    },
+    "choice": "native",
+    "reason": "The native diagnostics are clean (1 entity grounded, 1 box emitted, no stage failures, errors, or prompt-limit overflow), so there is no observed failure to justify rerouting through SAM or DINO, though a single box count cannot confirm that the box is correctly placed or that every reviewed object is covered.",
+    "prompt_equals_code_rebuild_from_public_case": true,
+    "prompt_observation_keys": [
+     "case",
+     "initial_native",
+     "review_frame",
+     "scene",
+     "split",
+     "video_frame",
+     "video_id"
+    ],
+    "prompt_contains_outcome_fields": false,
+    "raw_response_parses_to_stored_choice_and_reason": true,
+    "transcript_event_equals_decision_file": true,
+    "receipt_action_equals_choice": true,
+    "receipt_reason_equals_reason": true,
+    "receipt_observation_equals_case": true,
+    "receipt_sha_equals_chosen_lane": true,
+    "receipt_sha_differs_from_other_lanes": true,
+    "receipt_sha256": "b290943317eb3c33a006b569ec0996cf2cc56ad192d6fe59902940f65c6581d4",
+    "receipt_committed_utc": "2026-11-15T17:40:53.170414+00:00",
+    "agent_stop_state": "escalate_no_correct_category_match",
+    "fixed_action": "native",
+    "fixed_sha_equals_native_lane": true,
+    "fixed_stop_state": "escalate_no_correct_category_match",
+    "scored_counts_equal_chosen_lane": true,
+    "baseline_scored_counts_equal_native_lane": true,
+    "agent_tp_over_gold": [
+     0,
+     4
+    ],
+    "baseline_tp_over_gold": [
+     0,
+     4
+    ],
+    "model_ids": [
+     "claude-opus-5-5"
+    ],
+    "cost_usd": 0.030077800000000002,
+    "duration_ms": 3642,
+    "chain_pass": true
+   },
+   {
+    "case": "R02",
+    "observation_seen": {
+     "emitted_boxes": 20,
+     "generator_counts": {
+      "anchors_entity_stage_failed": 0,
+      "entities_above_prompt_limit_20": 0,
+      "entity_errors": 0,
+      "entity_grounded": 20
+     }
+    },
+    "choice": "native",
+    "reason": "Native Qwen32B grounded all 20 entities with no stage failures, entity errors, or prompt-limit overflow, so nothing points to a failure that SAM or DINO refinement would fix, though these counts alone cannot confirm the boxes are tight or correctly localized.",
+    "prompt_equals_code_rebuild_from_public_case": true,
+    "prompt_observation_keys": [
+     "case",
+     "initial_native",
+     "review_frame",
+     "scene",
+     "split",
+     "video_frame",
+     "video_id"
+    ],
+    "prompt_contains_outcome_fields": false,
+    "raw_response_parses_to_stored_choice_and_reason": true,
+    "transcript_event_equals_decision_file": true,
+    "receipt_action_equals_choice": true,
+    "receipt_reason_equals_reason": true,
+    "receipt_observation_equals_case": true,
+    "receipt_sha_equals_chosen_lane": true,
+    "receipt_sha_differs_from_other_lanes": true,
+    "receipt_sha256": "8d16403d4e027ac5158f2b10954cf2edd0abbbb3e1270120042160b9036e8dc5",
+    "receipt_committed_utc": "2026-11-15T17:40:58.641034+00:00",
+    "agent_stop_state": "accepted_minimum_evidence",
+    "fixed_action": "native",
+    "fixed_sha_equals_native_lane": true,
+    "fixed_stop_state": "accepted_minimum_evidence",
+    "scored_counts_equal_chosen_lane": true,
+    "baseline_scored_counts_equal_native_lane": true,
+    "agent_tp_over_gold": [
+     3,
+     23
+    ],
+    "baseline_tp_over_gold": [
+     3,
+     23
+    ],
+    "model_ids": [
+     "claude-opus-5-5"
+    ],
+    "cost_usd": 0.0273246,
+    "duration_ms": 4424,
+    "chain_pass": true
+   },
+   {
+    "case": "R03",
+    "observation_seen": {
+     "emitted_boxes": 0,
+     "generator_counts": {
+      "anchors_entity_stage_failed": 0,
+      "entities_above_prompt_limit_20": 0,
+      "entity_errors": 0,
+      "entity_grounded": 0
+     }
+    },
+    "choice": "dino",
+    "reason": "Native Qwen32B emitted 0 boxes with 0 entities grounded and no errors, so it covers nothing and Qwen\u2192SAM would likely have no Qwen boxes to refine; DINO\u2192SAM is the only option with an independent detector, though zero grounded entities could also mean the frame has nothing to ground, so box quality is unverified until the checker runs.",
+    "prompt_equals_code_rebuild_from_public_case": true,
+    "prompt_observation_keys": [
+     "case",
+     "initial_native",
+     "review_frame",
+     "scene",
+     "split",
+     "video_frame",
+     "video_id"
+    ],
+    "prompt_contains_outcome_fields": false,
+    "raw_response_parses_to_stored_choice_and_reason": true,
+    "transcript_event_equals_decision_file": true,
+    "receipt_action_equals_choice": true,
+    "receipt_reason_equals_reason": true,
+    "receipt_observation_equals_case": true,
+    "receipt_sha_equals_chosen_lane": true,
+    "receipt_sha_differs_from_other_lanes": true,
+    "receipt_sha256": "6dfb74563549cfdd2eef12aeaf7caa51c1672f49868e9d244eebf8d9f11621e4",
+    "receipt_committed_utc": "2026-11-15T17:41:04.872771+00:00",
+    "agent_stop_state": "accepted_minimum_evidence",
+    "fixed_action": "native",
+    "fixed_sha_equals_native_lane": true,
+    "fixed_stop_state": "escalate_no_correct_category_match",
+    "scored_counts_equal_chosen_lane": true,
+    "baseline_scored_counts_equal_native_lane": true,
+    "agent_tp_over_gold": [
+     1,
+     19
+    ],
+    "baseline_tp_over_gold": [
+     0,
+     19
+    ],
+    "model_ids": [
+     "claude-opus-5-5"
+    ],
+    "cost_usd": 0.029148599999999997,
+    "duration_ms": 5164,
+    "chain_pass": true
+   },
+   {
+    "case": "R04",
+    "observation_seen": {
+     "emitted_boxes": 50,
+     "generator_counts": {
+      "anchors_entity_stage_failed": 0,
+      "entities_above_prompt_limit_20": 30,
+      "entity_errors": 1,
+      "entity_grounded": 50
+     }
+    },
+    "choice": "sam",
+    "reason": "Native grounded 50 entities, but 30 exceed the 20-entity prompt limit, which would likely truncate the DINO path, so Qwen\u2192SAM keeps native coverage while refining boxes, though box quality is still unverified from counts alone.",
+    "prompt_equals_code_rebuild_from_public_case": true,
+    "prompt_observation_keys": [
+     "case",
+     "initial_native",
+     "review_frame",
+     "scene",
+     "split",
+     "video_frame",
+     "video_id"
+    ],
+    "prompt_contains_outcome_fields": false,
+    "raw_response_parses_to_stored_choice_and_reason": true,
+    "transcript_event_equals_decision_file": true,
+    "receipt_action_equals_choice": true,
+    "receipt_reason_equals_reason": true,
+    "receipt_observation_equals_case": true,
+    "receipt_sha_equals_chosen_lane": true,
+    "receipt_sha_differs_from_other_lanes": true,
+    "receipt_sha256": "752b9a09ab5e3536b8cbbfd142ee9ea71e0c3a9a204c00f672d464dbd7b5fb92",
+    "receipt_committed_utc": "2026-11-15T17:41:12.076047+00:00",
+    "agent_stop_state": "accepted_minimum_evidence",
+    "fixed_action": "native",
+    "fixed_sha_equals_native_lane": true,
+    "fixed_stop_state": "accepted_minimum_evidence",
+    "scored_counts_equal_chosen_lane": true,
+    "baseline_scored_counts_equal_native_lane": true,
+    "agent_tp_over_gold": [
+     6,
+     20
+    ],
+    "baseline_tp_over_gold": [
+     5,
+     20
+    ],
+    "model_ids": [
+     "claude-opus-5-5"
+    ],
+    "cost_usd": 0.030632599999999996,
+    "duration_ms": 6325,
+    "chain_pass": true
+   },
+   {
+    "case": "R05",
+    "observation_seen": {
+     "emitted_boxes": 23,
+     "generator_counts": {
+      "anchors_entity_stage_failed": 0,
+      "entities_above_prompt_limit_20": 3,
+      "entity_errors": 0,
+      "entity_grounded": 23
+     }
+    },
+    "choice": "native",
+    "reason": "Native grounded all 23 entities with no stage failures or errors, and the 3 entities above the 20-entity prompt limit make the re-grounding pipelines (especially DINO) more likely to drop objects, though these counts cannot confirm that the native boxes are well localized.",
+    "prompt_equals_code_rebuild_from_public_case": true,
+    "prompt_observation_keys": [
+     "case",
+     "initial_native",
+     "review_frame",
+     "scene",
+     "split",
+     "video_frame",
+     "video_id"
+    ],
+    "prompt_contains_outcome_fields": false,
+    "raw_response_parses_to_stored_choice_and_reason": true,
+    "transcript_event_equals_decision_file": true,
+    "receipt_action_equals_choice": true,
+    "receipt_reason_equals_reason": true,
+    "receipt_observation_equals_case": true,
+    "receipt_sha_equals_chosen_lane": true,
+    "receipt_sha_differs_from_other_lanes": true,
+    "receipt_sha256": "3b4844246384f4f34f773ec662c50d879cc6cb20659c9b07b5cb7efe2d154f1b",
+    "receipt_committed_utc": "2026-11-15T17:41:21.757203+00:00",
+    "agent_stop_state": "accepted_minimum_evidence",
+    "fixed_action": "native",
+    "fixed_sha_equals_native_lane": true,
+    "fixed_stop_state": "accepted_minimum_evidence",
+    "scored_counts_equal_chosen_lane": true,
+    "baseline_scored_counts_equal_native_lane": true,
+    "agent_tp_over_gold": [
+     5,
+     24
+    ],
+    "baseline_tp_over_gold": [
+     5,
+     24
+    ],
+    "model_ids": [
+     "claude-opus-5-5"
+    ],
+    "cost_usd": 0.0317886,
+    "duration_ms": 8612,
+    "chain_pass": true
+   },
+   {
+    "case": "R06",
+    "observation_seen": {
+     "emitted_boxes": 1,
+     "generator_counts": {
+      "anchors_entity_stage_failed": 0,
+      "entities_above_prompt_limit_20": 0,
+      "entity_errors": 0,
+      "entity_grounded": 1
+     }
+    },
+    "choice": "native",
+    "reason": "Native Qwen32B grounded its single entity with no stage failures, errors, or prompt-limit overflow, so there is no diagnostic evidence that SAM or DINO refinement is needed, though one box does not tell us whether all reviewed objects are covered or whether the box is accurate.",
+    "prompt_equals_code_rebuild_from_public_case": true,
+    "prompt_observation_keys": [
+     "case",
+     "initial_native",
+     "review_frame",
+     "scene",
+     "split",
+     "video_frame",
+     "video_id"
+    ],
+    "prompt_contains_outcome_fields": false,
+    "raw_response_parses_to_stored_choice_and_reason": true,
+    "transcript_event_equals_decision_file": true,
+    "receipt_action_equals_choice": true,
+    "receipt_reason_equals_reason": true,
+    "receipt_observation_equals_case": true,
+    "receipt_sha_equals_chosen_lane": true,
+    "receipt_sha_differs_from_other_lanes": true,
+    "receipt_sha256": "ca9e985eb04e7eeb65d9d6388518d798d39ee5a85a6cb06fa568708b9a4fe478",
+    "receipt_committed_utc": "2026-11-15T17:41:26.352958+00:00",
+    "agent_stop_state": "escalate_no_correct_category_match",
+    "fixed_action": "native",
+    "fixed_sha_equals_native_lane": true,
+    "fixed_stop_state": "escalate_no_correct_category_match",
+    "scored_counts_equal_chosen_lane": true,
+    "baseline_scored_counts_equal_native_lane": true,
+    "agent_tp_over_gold": [
+     0,
+     3
+    ],
+    "baseline_tp_over_gold": [
+     0,
+     3
+    ],
+    "model_ids": [
+     "claude-opus-5-5"
+    ],
+    "cost_usd": 0.0256366,
+    "duration_ms": 3575,
+    "chain_pass": true
+   },
+   {
+    "case": "R07",
+    "observation_seen": {
+     "emitted_boxes": 52,
+     "generator_counts": {
+      "anchors_entity_stage_failed": 0,
+      "entities_above_prompt_limit_20": 32,
+      "entity_errors": 2,
+      "entity_grounded": 52
+     }
+    },
+    "choice": "sam",
+    "reason": "Native grounded all 52 entities but 32 exceeded the 20-entity prompt limit and 2 errored, which suggests a dense scene where Qwen's boxes may be loose, so Qwen\u2192SAM keeps Qwen's coverage while tightening box localization; box quality is still unverified and the DINO stage was not chosen because re-detection could drop entities.",
+    "prompt_equals_code_rebuild_from_public_case": true,
+    "prompt_observation_keys": [
+     "case",
+     "initial_native",
+     "review_frame",
+     "scene",
+     "split",
+     "video_frame",
+     "video_id"
+    ],
+    "prompt_contains_outcome_fields": false,
+    "raw_response_parses_to_stored_choice_and_reason": true,
+    "transcript_event_equals_decision_file": true,
+    "receipt_action_equals_choice": true,
+    "receipt_reason_equals_reason": true,
+    "receipt_observation_equals_case": true,
+    "receipt_sha_equals_chosen_lane": true,
+    "receipt_sha_differs_from_other_lanes": true,
+    "receipt_sha256": "f08a49d8b0b7cfde2cc59a48bb46ff808a1f6c8bd242551bb8aaba7cc818c3ce",
+    "receipt_committed_utc": "2026-11-15T17:41:32.460205+00:00",
+    "agent_stop_state": "accepted_minimum_evidence",
+    "fixed_action": "native",
+    "fixed_sha_equals_native_lane": true,
+    "fixed_stop_state": "accepted_minimum_evidence",
+    "scored_counts_equal_chosen_lane": true,
+    "baseline_scored_counts_equal_native_lane": true,
+    "agent_tp_over_gold": [
+     4,
+     24
+    ],
+    "baseline_tp_over_gold": [
+     3,
+     24
+    ],
+    "model_ids": [
+     "claude-opus-5-5"
+    ],
+    "cost_usd": 0.029576599999999998,
+    "duration_ms": 5163,
+    "chain_pass": true
+   },
+   {
+    "case": "R08",
+    "observation_seen": {
+     "emitted_boxes": 49,
+     "generator_counts": {
+      "anchors_entity_stage_failed": 0,
+      "entities_above_prompt_limit_20": 29,
+      "entity_errors": 2,
+      "entity_grounded": 49
+     }
+    },
+    "choice": "sam",
+    "reason": "Native grounded all 49 entities with only 2 errors, so coverage looks good, but counts don't show box precision and 29 entities exceed DINO's 20-entity prompt limit, so refining Qwen's boxes with SAM is the best bet for keeping coverage while improving localization without the truncation risk of the DINO path.",
+    "prompt_equals_code_rebuild_from_public_case": true,
+    "prompt_observation_keys": [
+     "case",
+     "initial_native",
+     "review_frame",
+     "scene",
+     "split",
+     "video_frame",
+     "video_id"
+    ],
+    "prompt_contains_outcome_fields": false,
+    "raw_response_parses_to_stored_choice_and_reason": true,
+    "transcript_event_equals_decision_file": true,
+    "receipt_action_equals_choice": true,
+    "receipt_reason_equals_reason": true,
+    "receipt_observation_equals_case": true,
+    "receipt_sha_equals_chosen_lane": true,
+    "receipt_sha_differs_from_other_lanes": true,
+    "receipt_sha256": "3af2a4df99de4a67b6ef810c66d455a64241711a4a98e04e1bed2ef928a85007",
+    "receipt_committed_utc": "2026-11-15T17:41:37.908760+00:00",
+    "agent_stop_state": "accepted_minimum_evidence",
+    "fixed_action": "native",
+    "fixed_sha_equals_native_lane": true,
+    "fixed_stop_state": "accepted_minimum_evidence",
+    "scored_counts_equal_chosen_lane": true,
+    "baseline_scored_counts_equal_native_lane": true,
+    "agent_tp_over_gold": [
+     4,
+     15
+    ],
+    "baseline_tp_over_gold": [
+     3,
+     15
+    ],
+    "model_ids": [
+     "claude-opus-5-5"
+    ],
+    "cost_usd": 0.0275286,
+    "duration_ms": 4385,
+    "chain_pass": true
+   }
+  ],
+  "format_failures_dir_exists": false,
+  "run_json": {
+   "mode": "route",
+   "manual": false,
+   "model_requested": "claude-opus-5-5",
+   "claude_version": "2.1.325 (Claude Code)",
+   "case_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08"
+   ],
+   "budget": "one committed action per case; independent terminal check",
+   "model_interface": "installed Claude Code in print mode, built-in and MCP tools disabled; Python dispatches the selected action"
+  },
+  "total_cost_usd": 0.231714,
+  "model_calls_recorded": 8,
+  "all_model_ids": [
+   "claude-opus-5-5"
+  ],
+  "all_chains_pass": true
+ },
+ "B": {
+  "per_case_route": {
+   "R01": {
+    "native": {
+     "vendor": {
+      "gold": 4,
+      "pred": 1,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "independent": {
+      "gold": 4,
+      "pred": 1,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0
+     }
+    },
+    "sam": {
+     "vendor": {
+      "gold": 4,
+      "pred": 1,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "independent": {
+      "gold": 4,
+      "pred": 1,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0
+     }
+    },
+    "dino": {
+     "vendor": {
+      "gold": 4,
+      "pred": 4,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "independent": {
+      "gold": 4,
+      "pred": 4,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0
+     }
+    }
+   },
+   "R02": {
+    "native": {
+     "vendor": {
+      "gold": 23,
+      "pred": 20,
+      "tp": 3,
+      "iou_sum": 2.590990747353639,
+      "cat_agree": 3,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.881444,
+        "person",
+        "person"
+       ],
+       [
+        1,
+        2,
+        0.901962,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        1,
+        0.807585,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 23,
+      "pred": 20,
+      "tp": 3,
+      "iou_sum": 2.590990747353639,
+      "cat_agree": 3,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.881444,
+        "person",
+        "person"
+       ],
+       [
+        1,
+        2,
+        0.901962,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        1,
+        0.807585,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    },
+    "sam": {
+     "vendor": {
+      "gold": 23,
+      "pred": 20,
+      "tp": 3,
+      "iou_sum": 2.9553484424072662,
+      "cat_agree": 3,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.990196,
+        "person",
+        "person"
+       ],
+       [
+        1,
+        2,
+        0.993464,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        1,
+        0.971688,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 23,
+      "pred": 20,
+      "tp": 3,
+      "iou_sum": 2.9553484424072662,
+      "cat_agree": 3,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.990196,
+        "person",
+        "person"
+       ],
+       [
+        1,
+        2,
+        0.993464,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        1,
+        0.971688,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    },
+    "dino": {
+     "vendor": {
+      "gold": 23,
+      "pred": 0,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "independent": {
+      "gold": 23,
+      "pred": 0,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0
+     }
+    }
+   },
+   "R03": {
+    "native": {
+     "vendor": {
+      "gold": 19,
+      "pred": 0,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "independent": {
+      "gold": 19,
+      "pred": 0,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0
+     }
+    },
+    "sam": {
+     "vendor": {
+      "gold": 19,
+      "pred": 0,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "independent": {
+      "gold": 19,
+      "pred": 0,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0
+     }
+    },
+    "dino": {
+     "vendor": {
+      "gold": 19,
+      "pred": 4,
+      "tp": 1,
+      "iou_sum": 1.0,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        0,
+        1,
+        1.0,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 19,
+      "pred": 4,
+      "tp": 1,
+      "iou_sum": 1.0,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        0,
+        1,
+        1.0,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    }
+   },
+   "R04": {
+    "native": {
+     "vendor": {
+      "gold": 20,
+      "pred": 50,
+      "tp": 5,
+      "iou_sum": 3.9577185542165947,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        1,
+        2,
+        0.743253,
+        "container",
+        "material_load"
+       ],
+       [
+        2,
+        5,
+        0.843824,
+        "container",
+        "structure"
+       ],
+       [
+        4,
+        6,
+        0.846741,
+        "container",
+        "other"
+       ],
+       [
+        7,
+        1,
+        0.639103,
+        "person",
+        "person"
+       ],
+       [
+        10,
+        16,
+        0.884798,
+        "surface",
+        "other"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 20,
+      "pred": 50,
+      "tp": 5,
+      "iou_sum": 3.9577185542165947,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        1,
+        2,
+        0.743253,
+        "container",
+        "material_load"
+       ],
+       [
+        2,
+        5,
+        0.843824,
+        "container",
+        "structure"
+       ],
+       [
+        4,
+        6,
+        0.846741,
+        "container",
+        "other"
+       ],
+       [
+        7,
+        1,
+        0.639103,
+        "person",
+        "person"
+       ],
+       [
+        10,
+        16,
+        0.884798,
+        "surface",
+        "other"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    },
+    "sam": {
+     "vendor": {
+      "gold": 20,
+      "pred": 50,
+      "tp": 6,
+      "iou_sum": 4.854427648312802,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        1,
+        2,
+        0.852713,
+        "container",
+        "material_load"
+       ],
+       [
+        2,
+        5,
+        0.886712,
+        "container",
+        "structure"
+       ],
+       [
+        4,
+        6,
+        0.995951,
+        "container",
+        "other"
+       ],
+       [
+        6,
+        19,
+        0.581,
+        "surface",
+        "other"
+       ],
+       [
+        7,
+        1,
+        0.556016,
+        "person",
+        "person"
+       ],
+       [
+        10,
+        16,
+        0.982036,
+        "surface",
+        "other"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 20,
+      "pred": 50,
+      "tp": 6,
+      "iou_sum": 4.854427648312802,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        1,
+        2,
+        0.852713,
+        "container",
+        "material_load"
+       ],
+       [
+        2,
+        5,
+        0.886712,
+        "container",
+        "structure"
+       ],
+       [
+        4,
+        6,
+        0.995951,
+        "container",
+        "other"
+       ],
+       [
+        6,
+        19,
+        0.581,
+        "surface",
+        "other"
+       ],
+       [
+        7,
+        1,
+        0.556016,
+        "person",
+        "person"
+       ],
+       [
+        10,
+        16,
+        0.982036,
+        "surface",
+        "other"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    },
+    "dino": {
+     "vendor": {
+      "gold": 20,
+      "pred": 9,
+      "tp": 3,
+      "iou_sum": 2.95627275232686,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        1,
+        2,
+        0.987987,
+        "container",
+        "other"
+       ],
+       [
+        2,
+        4,
+        1.0,
+        "container",
+        "material_load"
+       ],
+       [
+        7,
+        6,
+        0.968286,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 20,
+      "pred": 9,
+      "tp": 3,
+      "iou_sum": 2.95627275232686,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        1,
+        2,
+        0.987987,
+        "container",
+        "other"
+       ],
+       [
+        2,
+        4,
+        1.0,
+        "container",
+        "material_load"
+       ],
+       [
+        7,
+        6,
+        0.968286,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    }
+   },
+   "R05": {
+    "native": {
+     "vendor": {
+      "gold": 24,
+      "pred": 23,
+      "tp": 5,
+      "iou_sum": 4.430084512279171,
+      "cat_agree": 2,
+      "cat_aware_tp": 2,
+      "pairs": [
+       [
+        0,
+        0,
+        0.9802,
+        "person",
+        "person"
+       ],
+       [
+        2,
+        12,
+        0.689104,
+        "container",
+        "container"
+       ],
+       [
+        3,
+        8,
+        0.930658,
+        "container",
+        "material_load"
+       ],
+       [
+        6,
+        5,
+        0.856949,
+        "person",
+        "other"
+       ],
+       [
+        16,
+        3,
+        0.973173,
+        "person",
+        "protective_equipment"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 24,
+      "pred": 23,
+      "tp": 5,
+      "iou_sum": 4.430084512279171,
+      "cat_agree": 2,
+      "cat_aware_tp": 2,
+      "pairs": [
+       [
+        0,
+        0,
+        0.9802,
+        "person",
+        "person"
+       ],
+       [
+        2,
+        12,
+        0.689104,
+        "container",
+        "container"
+       ],
+       [
+        3,
+        8,
+        0.930658,
+        "container",
+        "material_load"
+       ],
+       [
+        6,
+        5,
+        0.856949,
+        "person",
+        "other"
+       ],
+       [
+        16,
+        3,
+        0.973173,
+        "person",
+        "protective_equipment"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    },
+    "sam": {
+     "vendor": {
+      "gold": 24,
+      "pred": 23,
+      "tp": 5,
+      "iou_sum": 4.736557239325999,
+      "cat_agree": 2,
+      "cat_aware_tp": 2,
+      "pairs": [
+       [
+        0,
+        0,
+        0.998542,
+        "person",
+        "person"
+       ],
+       [
+        2,
+        12,
+        0.764103,
+        "container",
+        "container"
+       ],
+       [
+        3,
+        8,
+        0.997429,
+        "container",
+        "material_load"
+       ],
+       [
+        6,
+        5,
+        0.982652,
+        "person",
+        "other"
+       ],
+       [
+        16,
+        3,
+        0.993832,
+        "person",
+        "protective_equipment"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 24,
+      "pred": 23,
+      "tp": 5,
+      "iou_sum": 4.736557239325999,
+      "cat_agree": 2,
+      "cat_aware_tp": 2,
+      "pairs": [
+       [
+        0,
+        0,
+        0.998542,
+        "person",
+        "person"
+       ],
+       [
+        2,
+        12,
+        0.764103,
+        "container",
+        "container"
+       ],
+       [
+        3,
+        8,
+        0.997429,
+        "container",
+        "material_load"
+       ],
+       [
+        6,
+        5,
+        0.982652,
+        "person",
+        "other"
+       ],
+       [
+        16,
+        3,
+        0.993832,
+        "person",
+        "protective_equipment"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    },
+    "dino": {
+     "vendor": {
+      "gold": 24,
+      "pred": 7,
+      "tp": 2,
+      "iou_sum": 1.9818756073858115,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        0,
+        6,
+        0.998542,
+        "person",
+        "person"
+       ],
+       [
+        6,
+        0,
+        0.983333,
+        "person",
+        "other"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 24,
+      "pred": 7,
+      "tp": 2,
+      "iou_sum": 1.9818756073858115,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        0,
+        6,
+        0.998542,
+        "person",
+        "person"
+       ],
+       [
+        6,
+        0,
+        0.983333,
+        "person",
+        "other"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    }
+   },
+   "R06": {
+    "native": {
+     "vendor": {
+      "gold": 3,
+      "pred": 1,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "independent": {
+      "gold": 3,
+      "pred": 1,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0
+     }
+    },
+    "sam": {
+     "vendor": {
+      "gold": 3,
+      "pred": 1,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "independent": {
+      "gold": 3,
+      "pred": 1,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0
+     }
+    },
+    "dino": {
+     "vendor": {
+      "gold": 3,
+      "pred": 4,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "independent": {
+      "gold": 3,
+      "pred": 4,
+      "tp": 0,
+      "iou_sum": 0,
+      "cat_agree": 0,
+      "cat_aware_tp": 0,
+      "pairs": []
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0
+     }
+    }
+   },
+   "R07": {
+    "native": {
+     "vendor": {
+      "gold": 24,
+      "pred": 52,
+      "tp": 3,
+      "iou_sum": 2.334261626393793,
+      "cat_agree": 3,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.904018,
+        "person",
+        "person"
+       ],
+       [
+        1,
+        2,
+        0.644245,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        1,
+        0.785998,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 24,
+      "pred": 52,
+      "tp": 3,
+      "iou_sum": 2.334261626393793,
+      "cat_agree": 3,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.904018,
+        "person",
+        "person"
+       ],
+       [
+        1,
+        2,
+        0.644245,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        1,
+        0.785998,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    },
+    "sam": {
+     "vendor": {
+      "gold": 24,
+      "pred": 52,
+      "tp": 4,
+      "iou_sum": 3.4521325419891067,
+      "cat_agree": 2,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.976949,
+        "person",
+        "person"
+       ],
+       [
+        1,
+        8,
+        0.927643,
+        "person",
+        "protective_equipment"
+       ],
+       [
+        4,
+        1,
+        0.977778,
+        "person",
+        "person"
+       ],
+       [
+        14,
+        20,
+        0.569763,
+        "machine_equipment",
+        "other"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 24,
+      "pred": 52,
+      "tp": 4,
+      "iou_sum": 3.4521325419891067,
+      "cat_agree": 2,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.976949,
+        "person",
+        "person"
+       ],
+       [
+        1,
+        8,
+        0.927643,
+        "person",
+        "protective_equipment"
+       ],
+       [
+        4,
+        1,
+        0.977778,
+        "person",
+        "person"
+       ],
+       [
+        14,
+        20,
+        0.569763,
+        "machine_equipment",
+        "other"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    },
+    "dino": {
+     "vendor": {
+      "gold": 24,
+      "pred": 5,
+      "tp": 3,
+      "iou_sum": 2.9498871901045813,
+      "cat_agree": 3,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.989967,
+        "person",
+        "person"
+       ],
+       [
+        1,
+        2,
+        0.982143,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        1,
+        0.977778,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 24,
+      "pred": 5,
+      "tp": 3,
+      "iou_sum": 2.9498871901045813,
+      "cat_agree": 3,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.989967,
+        "person",
+        "person"
+       ],
+       [
+        1,
+        2,
+        0.982143,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        1,
+        0.977778,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    }
+   },
+   "R08": {
+    "native": {
+     "vendor": {
+      "gold": 15,
+      "pred": 49,
+      "tp": 3,
+      "iou_sum": 1.8770726057617206,
+      "cat_agree": 2,
+      "cat_aware_tp": 2,
+      "pairs": [
+       [
+        0,
+        0,
+        0.788382,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        11,
+        0.575178,
+        "other",
+        "other"
+       ],
+       [
+        5,
+        19,
+        0.513514,
+        "other",
+        "material_load"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 15,
+      "pred": 49,
+      "tp": 3,
+      "iou_sum": 1.8770726057617206,
+      "cat_agree": 2,
+      "cat_aware_tp": 2,
+      "pairs": [
+       [
+        0,
+        0,
+        0.788382,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        11,
+        0.575178,
+        "other",
+        "other"
+       ],
+       [
+        5,
+        19,
+        0.513514,
+        "other",
+        "material_load"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    },
+    "sam": {
+     "vendor": {
+      "gold": 15,
+      "pred": 49,
+      "tp": 4,
+      "iou_sum": 3.4467060622026375,
+      "cat_agree": 3,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.945205,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        11,
+        0.983333,
+        "other",
+        "other"
+       ],
+       [
+        5,
+        19,
+        0.716084,
+        "other",
+        "material_load"
+       ],
+       [
+        6,
+        8,
+        0.802083,
+        "other",
+        "other"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 15,
+      "pred": 49,
+      "tp": 4,
+      "iou_sum": 3.4467060622026375,
+      "cat_agree": 3,
+      "cat_aware_tp": 3,
+      "pairs": [
+       [
+        0,
+        0,
+        0.945205,
+        "person",
+        "person"
+       ],
+       [
+        4,
+        11,
+        0.983333,
+        "other",
+        "other"
+       ],
+       [
+        5,
+        19,
+        0.716084,
+        "other",
+        "material_load"
+       ],
+       [
+        6,
+        8,
+        0.802083,
+        "other",
+        "other"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    },
+    "dino": {
+     "vendor": {
+      "gold": 15,
+      "pred": 5,
+      "tp": 1,
+      "iou_sum": 0.966158464044512,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        0,
+        1,
+        0.966158,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "independent": {
+      "gold": 15,
+      "pred": 5,
+      "tp": 1,
+      "iou_sum": 0.966158464044512,
+      "cat_agree": 1,
+      "cat_aware_tp": 1,
+      "pairs": [
+       [
+        0,
+        1,
+        0.966158,
+        "person",
+        "person"
+       ]
+      ]
+     },
+     "agreement": {
+      "gold": true,
+      "pred": true,
+      "tp": true,
+      "cat_agree": true,
+      "cat_aware_tp": true,
+      "iou_sum_absdiff": 0.0
+     }
+    }
+   }
+  },
+  "policies": {
+   "agent (Claude)": {
+    "choices": {
+     "R01": "native",
+     "R02": "native",
+     "R03": "dino",
+     "R04": "sam",
+     "R05": "native",
+     "R06": "native",
+     "R07": "sam",
+     "R08": "sam"
+    },
+    "vendor": {
+     "gold_localization_recall": [
+      23,
+      132
+     ],
+     "category_aware_recall": [
+      13,
+      132
+     ],
+     "gold_support_yield": [
+      23,
+      200
+     ],
+     "conditional_iou": [
+      19.774342,
+      23
+     ],
+     "matched_category_agreement": [
+      12,
+      23
+     ],
+     "frames_min_evidence": [
+      6,
+      8
+     ]
+    },
+    "independent": {
+     "gold_localization_recall": [
+      23,
+      132
+     ],
+     "category_aware_recall": [
+      13,
+      132
+     ],
+     "gold_support_yield": [
+      23,
+      200
+     ],
+     "conditional_iou": [
+      19.774342,
+      23
+     ],
+     "matched_category_agreement": [
+      12,
+      23
+     ],
+     "frames_min_evidence": [
+      6,
+      8
+     ]
+    }
+   },
+   "always native (pre-registered baseline)": {
+    "choices": {
+     "R01": "native",
+     "R02": "native",
+     "R03": "native",
+     "R04": "native",
+     "R05": "native",
+     "R06": "native",
+     "R07": "native",
+     "R08": "native"
+    },
+    "vendor": {
+     "gold_localization_recall": [
+      19,
+      132
+     ],
+     "category_aware_recall": [
+      11,
+      132
+     ],
+     "gold_support_yield": [
+      19,
+      196
+     ],
+     "conditional_iou": [
+      15.190128,
+      19
+     ],
+     "matched_category_agreement": [
+      11,
+      19
+     ],
+     "frames_min_evidence": [
+      5,
+      8
+     ]
+    },
+    "independent": {
+     "gold_localization_recall": [
+      19,
+      132
+     ],
+     "category_aware_recall": [
+      11,
+      132
+     ],
+     "gold_support_yield": [
+      19,
+      196
+     ],
+     "conditional_iou": [
+      15.190128,
+      19
+     ],
+     "matched_category_agreement": [
+      11,
+      19
+     ],
+     "frames_min_evidence": [
+      5,
+      8
+     ]
+    }
+   },
+   "always SAM (exploratory)": {
+    "choices": {
+     "R01": "sam",
+     "R02": "sam",
+     "R03": "sam",
+     "R04": "sam",
+     "R05": "sam",
+     "R06": "sam",
+     "R07": "sam",
+     "R08": "sam"
+    },
+    "vendor": {
+     "gold_localization_recall": [
+      22,
+      132
+     ],
+     "category_aware_recall": [
+      12,
+      132
+     ],
+     "gold_support_yield": [
+      22,
+      196
+     ],
+     "conditional_iou": [
+      19.445172,
+      22
+     ],
+     "matched_category_agreement": [
+      11,
+      22
+     ],
+     "frames_min_evidence": [
+      5,
+      8
+     ]
+    },
+    "independent": {
+     "gold_localization_recall": [
+      22,
+      132
+     ],
+     "category_aware_recall": [
+      12,
+      132
+     ],
+     "gold_support_yield": [
+      22,
+      196
+     ],
+     "conditional_iou": [
+      19.445172,
+      22
+     ],
+     "matched_category_agreement": [
+      11,
+      22
+     ],
+     "frames_min_evidence": [
+      5,
+      8
+     ]
+    }
+   },
+   "always DINO (exploratory)": {
+    "choices": {
+     "R01": "dino",
+     "R02": "dino",
+     "R03": "dino",
+     "R04": "dino",
+     "R05": "dino",
+     "R06": "dino",
+     "R07": "dino",
+     "R08": "dino"
+    },
+    "vendor": {
+     "gold_localization_recall": [
+      10,
+      132
+     ],
+     "category_aware_recall": [
+      7,
+      132
+     ],
+     "gold_support_yield": [
+      10,
+      38
+     ],
+     "conditional_iou": [
+      9.854194,
+      10
+     ],
+     "matched_category_agreement": [
+      7,
+      10
+     ],
+     "frames_min_evidence": [
+      5,
+      8
+     ]
+    },
+    "independent": {
+     "gold_localization_recall": [
+      10,
+      132
+     ],
+     "category_aware_recall": [
+      7,
+      132
+     ],
+     "gold_support_yield": [
+      10,
+      38
+     ],
+     "conditional_iou": [
+      9.854194,
+      10
+     ],
+     "matched_category_agreement": [
+      7,
+      10
+     ],
+     "frames_min_evidence": [
+      5,
+      8
+     ]
+    }
+   },
+   "rule: SAM unless native empty, then DINO (post-hoc)": {
+    "choices": {
+     "R01": "sam",
+     "R02": "sam",
+     "R03": "dino",
+     "R04": "sam",
+     "R05": "sam",
+     "R06": "sam",
+     "R07": "sam",
+     "R08": "sam"
+    },
+    "vendor": {
+     "gold_localization_recall": [
+      23,
+      132
+     ],
+     "category_aware_recall": [
+      13,
+      132
+     ],
+     "gold_support_yield": [
+      23,
+      200
+     ],
+     "conditional_iou": [
+      20.445172,
+      23
+     ],
+     "matched_category_agreement": [
+      12,
+      23
+     ],
+     "frames_min_evidence": [
+      6,
+      8
+     ]
+    },
+    "independent": {
+     "gold_localization_recall": [
+      23,
+      132
+     ],
+     "category_aware_recall": [
+      13,
+      132
+     ],
+     "gold_support_yield": [
+      23,
+      200
+     ],
+     "conditional_iou": [
+      20.445172,
+      23
+     ],
+     "matched_category_agreement": [
+      12,
+      23
+     ],
+     "frames_min_evidence": [
+      6,
+      8
+     ]
+    }
+   },
+   "per-frame best (ORACLE, Gold-based)": {
+    "choices": {
+     "R01": "native",
+     "R02": "native",
+     "R03": "dino",
+     "R04": "sam",
+     "R05": "native",
+     "R06": "native",
+     "R07": "sam",
+     "R08": "sam"
+    },
+    "vendor": {
+     "gold_localization_recall": [
+      23,
+      132
+     ],
+     "category_aware_recall": [
+      13,
+      132
+     ],
+     "gold_support_yield": [
+      23,
+      200
+     ],
+     "conditional_iou": [
+      19.774342,
+      23
+     ],
+     "matched_category_agreement": [
+      12,
+      23
+     ],
+     "frames_min_evidence": [
+      6,
+      8
+     ]
+    },
+    "independent": {
+     "gold_localization_recall": [
+      23,
+      132
+     ],
+     "category_aware_recall": [
+      13,
+      132
+     ],
+     "gold_support_yield": [
+      23,
+      200
+     ],
+     "conditional_iou": [
+      19.774342,
+      23
+     ],
+     "matched_category_agreement": [
+      12,
+      23
+     ],
+     "frames_min_evidence": [
+      6,
+      8
+     ]
+    }
+   }
+  },
+  "matchers_agree_all_rows": true,
+  "max_matcher_iou_sum_absdiff": 0,
+  "agent_match_category_pairs": {
+   "container -> container": 1,
+   "container -> material_load": 2,
+   "container -> other": 1,
+   "container -> structure": 1,
+   "machine_equipment -> other": 1,
+   "other -> material_load": 1,
+   "other -> other": 2,
+   "person -> other": 1,
+   "person -> person": 9,
+   "person -> protective_equipment": 2,
+   "surface -> other": 2
+  },
+  "agent_matches_involving_other_unknown_unmapped": [
+   [
+    "R04",
+    "sam",
+    "container",
+    "other"
+   ],
+   [
+    "R04",
+    "sam",
+    "surface",
+    "other"
+   ],
+   [
+    "R04",
+    "sam",
+    "surface",
+    "other"
+   ],
+   [
+    "R05",
+    "native",
+    "person",
+    "other"
+   ],
+   [
+    "R07",
+    "sam",
+    "machine_equipment",
+    "other"
+   ],
+   [
+    "R08",
+    "sam",
+    "other",
+    "other"
+   ],
+   [
+    "R08",
+    "sam",
+    "other",
+    "material_load"
+   ],
+   [
+    "R08",
+    "sam",
+    "other",
+    "other"
+   ]
+  ],
+  "category_aware_vs_agreement_cases": [
+   {
+    "case": "R07",
+    "route": "sam",
+    "geometric_pairs": [
+     [
+      0,
+      0,
+      0.976949,
+      "person",
+      "person"
+     ],
+     [
+      1,
+      8,
+      0.927643,
+      "person",
+      "protective_equipment"
+     ],
+     [
+      4,
+      1,
+      0.977778,
+      "person",
+      "person"
+     ],
+     [
+      14,
+      20,
+      0.569763,
+      "machine_equipment",
+      "other"
+     ]
+    ],
+    "class_constrained_pairs": [
+     [
+      0,
+      0,
+      0.976949,
+      "person"
+     ],
+     [
+      1,
+      2,
+      0.713376,
+      "person"
+     ],
+     [
+      4,
+      1,
+      0.977778,
+      "person"
+     ]
+    ],
+    "cat_agree_in_geometric": 2,
+    "class_constrained_tp": 3
+   }
+  ]
+ },
+ "C": {
+  "rows": [
+   {
+    "case": "R01",
+    "route": "native",
+    "integer_counts_identical": true,
+    "iou_sum_package": 0.0,
+    "iou_sum_recomputed": 0,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R01",
+    "route": "sam",
+    "integer_counts_identical": true,
+    "iou_sum_package": 0.0,
+    "iou_sum_recomputed": 0,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R01",
+    "route": "dino",
+    "integer_counts_identical": true,
+    "iou_sum_package": 0.0,
+    "iou_sum_recomputed": 0,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R02",
+    "route": "native",
+    "integer_counts_identical": true,
+    "iou_sum_package": 2.5912399407913522,
+    "iou_sum_recomputed": 2.590990747353639,
+    "iou_sum_exactly_equal": false,
+    "iou_sum_absdiff": 0.0002491934377131244
+   },
+   {
+    "case": "R02",
+    "route": "sam",
+    "integer_counts_identical": true,
+    "iou_sum_package": 2.9553484424072662,
+    "iou_sum_recomputed": 2.9553484424072662,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R02",
+    "route": "dino",
+    "integer_counts_identical": true,
+    "iou_sum_package": 0.0,
+    "iou_sum_recomputed": 0,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R03",
+    "route": "native",
+    "integer_counts_identical": true,
+    "iou_sum_package": 0.0,
+    "iou_sum_recomputed": 0,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R03",
+    "route": "sam",
+    "integer_counts_identical": true,
+    "iou_sum_package": 0.0,
+    "iou_sum_recomputed": 0,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R03",
+    "route": "dino",
+    "integer_counts_identical": true,
+    "iou_sum_package": 1.0,
+    "iou_sum_recomputed": 1.0,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R04",
+    "route": "native",
+    "integer_counts_identical": true,
+    "iou_sum_package": 3.9580425900658245,
+    "iou_sum_recomputed": 3.9577185542165947,
+    "iou_sum_exactly_equal": false,
+    "iou_sum_absdiff": 0.0003240358492297979
+   },
+   {
+    "case": "R04",
+    "route": "sam",
+    "integer_counts_identical": true,
+    "iou_sum_package": 4.854427648312802,
+    "iou_sum_recomputed": 4.854427648312802,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R04",
+    "route": "dino",
+    "integer_counts_identical": true,
+    "iou_sum_package": 2.9562727523268597,
+    "iou_sum_recomputed": 2.95627275232686,
+    "iou_sum_exactly_equal": false,
+    "iou_sum_absdiff": 4.440892098500626e-16
+   },
+   {
+    "case": "R05",
+    "route": "native",
+    "integer_counts_identical": true,
+    "iou_sum_package": 4.4298584524101035,
+    "iou_sum_recomputed": 4.430084512279171,
+    "iou_sum_exactly_equal": false,
+    "iou_sum_absdiff": 0.00022605986906754083
+   },
+   {
+    "case": "R05",
+    "route": "sam",
+    "integer_counts_identical": true,
+    "iou_sum_package": 4.736557239326,
+    "iou_sum_recomputed": 4.736557239325999,
+    "iou_sum_exactly_equal": false,
+    "iou_sum_absdiff": 8.881784197001252e-16
+   },
+   {
+    "case": "R05",
+    "route": "dino",
+    "integer_counts_identical": true,
+    "iou_sum_package": 1.9818756073858115,
+    "iou_sum_recomputed": 1.9818756073858115,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R06",
+    "route": "native",
+    "integer_counts_identical": true,
+    "iou_sum_package": 0.0,
+    "iou_sum_recomputed": 0,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R06",
+    "route": "sam",
+    "integer_counts_identical": true,
+    "iou_sum_package": 0.0,
+    "iou_sum_recomputed": 0,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R06",
+    "route": "dino",
+    "integer_counts_identical": true,
+    "iou_sum_package": 0.0,
+    "iou_sum_recomputed": 0,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R07",
+    "route": "native",
+    "integer_counts_identical": true,
+    "iou_sum_package": 2.334949692897813,
+    "iou_sum_recomputed": 2.334261626393793,
+    "iou_sum_exactly_equal": false,
+    "iou_sum_absdiff": 0.0006880665040198686
+   },
+   {
+    "case": "R07",
+    "route": "sam",
+    "integer_counts_identical": true,
+    "iou_sum_package": 3.452132541989107,
+    "iou_sum_recomputed": 3.4521325419891067,
+    "iou_sum_exactly_equal": false,
+    "iou_sum_absdiff": 4.440892098500626e-16
+   },
+   {
+    "case": "R07",
+    "route": "dino",
+    "integer_counts_identical": true,
+    "iou_sum_package": 2.9498871901045813,
+    "iou_sum_recomputed": 2.9498871901045813,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R08",
+    "route": "native",
+    "integer_counts_identical": true,
+    "iou_sum_package": 1.8770726057617209,
+    "iou_sum_recomputed": 1.8770726057617206,
+    "iou_sum_exactly_equal": false,
+    "iou_sum_absdiff": 2.220446049250313e-16
+   },
+   {
+    "case": "R08",
+    "route": "sam",
+    "integer_counts_identical": true,
+    "iou_sum_package": 3.4467060622026375,
+    "iou_sum_recomputed": 3.4467060622026375,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   },
+   {
+    "case": "R08",
+    "route": "dino",
+    "integer_counts_identical": true,
+    "iou_sum_package": 0.966158464044512,
+    "iou_sum_recomputed": 0.966158464044512,
+    "iou_sum_exactly_equal": true,
+    "iou_sum_absdiff": 0.0
+   }
+  ],
+  "rows_integer_identical": 24,
+  "rows_iou_sum_bitwise_equal": 16,
+  "rows_iou_sum_absdiff_below_1e-6": 20,
+  "rows_iou_sum_absdiff_ge_1e-6": [
+   [
+    "R02",
+    "native",
+    0.0002491934377131244
+   ],
+   [
+    "R04",
+    "native",
+    0.0003240358492297979
+   ],
+   [
+    "R05",
+    "native",
+    0.00022605986906754083
+   ],
+   [
+    "R07",
+    "native",
+    0.0006880665040198686
+   ]
+  ]
+ },
+ "D": {
+  "package_zip_sha256": "a14b66341cd3d416a66305bdf731e16f47835d95507208dfba19cece7c941253",
+  "package_files_unchanged": true,
+  "package_files_changed": [],
+  "eligible_dev_frames_all_three_lanes": 39,
+  "eligible_scenes": 5,
+  "round_robin_selection_reproduced": [
+   [
+    "clip_0c8b65e1d5cd5522fdbe",
+    1
+   ],
+   [
+    "clip_585e95032c6b458b4e36",
+    3
+   ],
+   [
+    "clip_b2afbf183ec6582616d2",
+    1
+   ],
+   [
+    "clip_df7ca56329a117fe757c",
+    1
+   ],
+   [
+    "clip_f683f2584f26d212d8f6",
+    1
+   ],
+   [
+    "clip_0c8b65e1d5cd5522fdbe",
+    31
+   ],
+   [
+    "clip_585e95032c6b458b4e36",
+    27
+   ],
+   [
+    "clip_b2afbf183ec6582616d2",
+    22
+   ]
+  ],
+  "package_cases": [
+   [
+    "clip_0c8b65e1d5cd5522fdbe",
+    1
+   ],
+   [
+    "clip_585e95032c6b458b4e36",
+    3
+   ],
+   [
+    "clip_b2afbf183ec6582616d2",
+    1
+   ],
+   [
+    "clip_df7ca56329a117fe757c",
+    1
+   ],
+   [
+    "clip_f683f2584f26d212d8f6",
+    1
+   ],
+   [
+    "clip_0c8b65e1d5cd5522fdbe",
+    31
+   ],
+   [
+    "clip_585e95032c6b458b4e36",
+    27
+   ],
+   [
+    "clip_b2afbf183ec6582616d2",
+    22
+   ]
+  ],
+  "selection_matches_package": true,
+  "all_cases_dev_split": true,
+  "decision_times_utc": [
+   "2026-11-15T17:40:53.170414+00:00",
+   "2026-11-15T17:40:58.641034+00:00",
+   "2026-11-15T17:41:04.872771+00:00",
+   "2026-11-15T17:41:12.076047+00:00",
+   "2026-11-15T17:41:21.757203+00:00",
+   "2026-11-15T17:41:26.352958+00:00",
+   "2026-11-15T17:41:32.460205+00:00",
+   "2026-11-15T17:41:37.908760+00:00"
+  ],
+  "route_py_reads_only_json": "no subprocess/network/GPU imports in route.py"
+ }
+}

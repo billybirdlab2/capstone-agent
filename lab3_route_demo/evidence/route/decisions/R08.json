@@ -1,0 +1,80 @@
+{
+  "case": "R08",
+  "observation": {
+    "case": "R08",
+    "initial_native": {
+      "emitted_boxes": 49,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 29,
+        "entity_errors": 2,
+        "entity_grounded": 49
+      }
+    },
+    "review_frame": 22,
+    "scene": "clip_b2afbf183ec6582616d2",
+    "split": "development",
+    "video_frame": 22,
+    "video_id": "a5aad3a325ae878944869c85"
+  },
+  "prompt": "Choose which cached grounding configuration to use for this Dylan development frame. 'native' keeps Qwen32B, 'sam' uses Qwen→SAM, and 'dino' uses Qwen→DINO→SAM. The goal is to cover reviewed objects with correctly grounded boxes. You only see native output counts and generator diagnostics. Make one decision with the information available. Counts alone do not establish box quality.\nYou control one local choose tool. Use only this observation. Return exactly one JSON object with case, choice, reason. The value of choice must be one of the allowed IDs. Write one sentence identifying the evidence or uncertainty behind your action. The executor will commit the choice, run the independent checker and stop this case.\n\n{\n  \"case\": \"R08\",\n  \"observation\": {\n    \"case\": \"R08\",\n    \"initial_native\": {\n      \"emitted_boxes\": 49,\n      \"generator_counts\": {\n        \"anchors_entity_stage_failed\": 0,\n        \"entities_above_prompt_limit_20\": 29,\n        \"entity_errors\": 2,\n        \"entity_grounded\": 49\n      }\n    },\n    \"review_frame\": 22,\n    \"scene\": \"clip_b2afbf183ec6582616d2\",\n    \"split\": \"development\",\n    \"video_frame\": 22,\n    \"video_id\": \"a5aad3a325ae878944869c85\"\n  },\n  \"allowed_choices\": [\n    \"native\",\n    \"sam\",\n    \"dino\"\n  ]\n}",
+  "choice": "sam",
+  "reason": "Native grounded all 49 entities with only 2 errors, so coverage looks good, but counts don't show box precision and 29 entities exceed DINO's 20-entity prompt limit, so refining Qwen's boxes with SAM is the best bet for keeping coverage while improving localization without the truncation risk of the DINO path.",
+  "raw_response": "```json\n{\"case\": \"R08\", \"choice\": \"sam\", \"reason\": \"Native grounded all 49 entities with only 2 errors, so coverage looks good, but counts don't show box precision and 29 entities exceed DINO's 20-entity prompt limit, so refining Qwen's boxes with SAM is the best bet for keeping coverage while improving localization without the truncation risk of the DINO path.\"}\n```",
+  "model_metadata": {
+    "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2607,
+      "cache_read_input_tokens": 1223,
+      "output_tokens": 321,
+      "output_tokens_details": {
+        "thinking_tokens": 186
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 2607,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 321,
+          "cache_read_input_tokens": 1223,
+          "cache_creation_input_tokens": 2607,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2607
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "duration_ms": 4385,
+    "total_cost_usd": 0.0275286,
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 321,
+        "cacheReadInputTokens": 1223,
+        "cacheCreationInputTokens": 2607,
+        "webSearchRequests": 0,
+        "costUSD": 0.0275286,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 186,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 2607,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  }
+}

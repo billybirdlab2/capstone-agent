@@ -1,0 +1,28 @@
+{
+  "action": "native",
+  "cached_lane_reads": 1,
+  "case": "R02",
+  "committed_utc": "2026-11-15T17:40:58.641034+00:00",
+  "mode": "agent",
+  "observation": {
+    "case": "R02",
+    "initial_native": {
+      "emitted_boxes": 20,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 0,
+        "entity_errors": 0,
+        "entity_grounded": 20
+      }
+    },
+    "review_frame": 3,
+    "scene": "clip_585e95032c6b458b4e36",
+    "split": "development",
+    "video_frame": 3,
+    "video_id": "1495fc86117ad5b436889d91"
+  },
+  "reason": "Native Qwen32B grounded all 20 entities with no stage failures, entity errors, or prompt-limit overflow, so nothing points to a failure that SAM or DINO refinement would fix, though these counts alone cannot confirm the boxes are tight or correctly localized.",
+  "result_sha256": "8d16403d4e027ac5158f2b10954cf2edd0abbbb3e1270120042160b9036e8dc5",
+  "run": "agent",
+  "stop_state": "accepted_minimum_evidence"
+}

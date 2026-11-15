@@ -1,0 +1,80 @@
+{
+  "case": "R03",
+  "observation": {
+    "case": "R03",
+    "initial_native": {
+      "emitted_boxes": 0,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 0,
+        "entity_errors": 0,
+        "entity_grounded": 0
+      }
+    },
+    "review_frame": 1,
+    "scene": "clip_b2afbf183ec6582616d2",
+    "split": "development",
+    "video_frame": 1,
+    "video_id": "a5aad3a325ae878944869c85"
+  },
+  "prompt": "Choose which cached grounding configuration to use for this Dylan development frame. 'native' keeps Qwen32B, 'sam' uses Qwen→SAM, and 'dino' uses Qwen→DINO→SAM. The goal is to cover reviewed objects with correctly grounded boxes. You only see native output counts and generator diagnostics. Make one decision with the information available. Counts alone do not establish box quality.\nYou control one local choose tool. Use only this observation. Return exactly one JSON object with case, choice, reason. The value of choice must be one of the allowed IDs. Write one sentence identifying the evidence or uncertainty behind your action. The executor will commit the choice, run the independent checker and stop this case.\n\n{\n  \"case\": \"R03\",\n  \"observation\": {\n    \"case\": \"R03\",\n    \"initial_native\": {\n      \"emitted_boxes\": 0,\n      \"generator_counts\": {\n        \"anchors_entity_stage_failed\": 0,\n        \"entities_above_prompt_limit_20\": 0,\n        \"entity_errors\": 0,\n        \"entity_grounded\": 0\n      }\n    },\n    \"review_frame\": 1,\n    \"scene\": \"clip_b2afbf183ec6582616d2\",\n    \"split\": \"development\",\n    \"video_frame\": 1,\n    \"video_id\": \"a5aad3a325ae878944869c85\"\n  },\n  \"allowed_choices\": [\n    \"native\",\n    \"sam\",\n    \"dino\"\n  ]\n}",
+  "choice": "dino",
+  "reason": "Native Qwen32B emitted 0 boxes with 0 entities grounded and no errors, so it covers nothing and Qwen→SAM would likely have no Qwen boxes to refine; DINO→SAM is the only option with an independent detector, though zero grounded entities could also mean the frame has nothing to ground, so box quality is unverified until the checker runs.",
+  "raw_response": "```json\n{\"case\": \"R03\", \"choice\": \"dino\", \"reason\": \"Native Qwen32B emitted 0 boxes with 0 entities grounded and no errors, so it covers nothing and Qwen→SAM would likely have no Qwen boxes to refine; DINO→SAM is the only option with an independent detector, though zero grounded entities could also mean the frame has nothing to ground, so box quality is unverified until the checker runs.\"}\n```",
+  "model_metadata": {
+    "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2607,
+      "cache_read_input_tokens": 1223,
+      "output_tokens": 402,
+      "output_tokens_details": {
+        "thinking_tokens": 254
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 2607,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 402,
+          "cache_read_input_tokens": 1223,
+          "cache_creation_input_tokens": 2607,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2607
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "duration_ms": 5164,
+    "total_cost_usd": 0.029148599999999997,
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 402,
+        "cacheReadInputTokens": 1223,
+        "cacheCreationInputTokens": 2607,
+        "webSearchRequests": 0,
+        "costUSD": 0.029148599999999997,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 254,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 2607,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  }
+}

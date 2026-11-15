@@ -1,0 +1,28 @@
+{
+  "action": "native",
+  "cached_lane_reads": 1,
+  "case": "R01",
+  "committed_utc": "2026-11-15T17:41:37.945241+00:00",
+  "mode": "fixed",
+  "observation": {
+    "case": "R01",
+    "initial_native": {
+      "emitted_boxes": 1,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 0,
+        "entity_errors": 0,
+        "entity_grounded": 1
+      }
+    },
+    "review_frame": 1,
+    "scene": "clip_0c8b65e1d5cd5522fdbe",
+    "split": "development",
+    "video_frame": 1,
+    "video_id": "52f825c46c5830a45738bb97"
+  },
+  "reason": "Predeclared fixed policy: retain native Qwen32B boxes.",
+  "result_sha256": "b290943317eb3c33a006b569ec0996cf2cc56ad192d6fe59902940f65c6581d4",
+  "run": "fixed",
+  "stop_state": "escalate_no_correct_category_match"
+}

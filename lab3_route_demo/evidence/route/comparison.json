@@ -1,0 +1,384 @@
+{
+  "agent": {
+    "cases": {
+      "R01": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 0,
+          "fn": 4,
+          "gold_objects": 4,
+          "matched_correct_category": 0,
+          "pixel_mask_comparisons": 0,
+          "predictions": 1,
+          "tp": 0
+        },
+        "reason": "The native diagnostics are clean (1 entity grounded, 1 box emitted, no stage failures, errors, or prompt-limit overflow), so there is no observed failure to justify rerouting through SAM or DINO, though a single box count cannot confirm that the box is correctly placed or that every reviewed object is covered.",
+        "stop_state": "escalate_no_correct_category_match",
+        "sum_matched_box_iou": 0.0
+      },
+      "R02": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 3,
+          "fn": 20,
+          "gold_objects": 23,
+          "matched_correct_category": 3,
+          "pixel_mask_comparisons": 0,
+          "predictions": 20,
+          "tp": 3
+        },
+        "reason": "Native Qwen32B grounded all 20 entities with no stage failures, entity errors, or prompt-limit overflow, so nothing points to a failure that SAM or DINO refinement would fix, though these counts alone cannot confirm the boxes are tight or correctly localized.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 2.5912399407913522
+      },
+      "R03": {
+        "action": "dino",
+        "counts": {
+          "category_aware_tp": 1,
+          "fn": 18,
+          "gold_objects": 19,
+          "matched_correct_category": 1,
+          "pixel_mask_comparisons": 0,
+          "predictions": 4,
+          "tp": 1
+        },
+        "reason": "Native Qwen32B emitted 0 boxes with 0 entities grounded and no errors, so it covers nothing and Qwen→SAM would likely have no Qwen boxes to refine; DINO→SAM is the only option with an independent detector, though zero grounded entities could also mean the frame has nothing to ground, so box quality is unverified until the checker runs.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 1.0
+      },
+      "R04": {
+        "action": "sam",
+        "counts": {
+          "category_aware_tp": 1,
+          "fn": 14,
+          "gold_objects": 20,
+          "matched_correct_category": 1,
+          "pixel_mask_comparisons": 0,
+          "predictions": 50,
+          "tp": 6
+        },
+        "reason": "Native grounded 50 entities, but 30 exceed the 20-entity prompt limit, which would likely truncate the DINO path, so Qwen→SAM keeps native coverage while refining boxes, though box quality is still unverified from counts alone.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 4.854427648312802
+      },
+      "R05": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 2,
+          "fn": 19,
+          "gold_objects": 24,
+          "matched_correct_category": 2,
+          "pixel_mask_comparisons": 0,
+          "predictions": 23,
+          "tp": 5
+        },
+        "reason": "Native grounded all 23 entities with no stage failures or errors, and the 3 entities above the 20-entity prompt limit make the re-grounding pipelines (especially DINO) more likely to drop objects, though these counts cannot confirm that the native boxes are well localized.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 4.4298584524101035
+      },
+      "R06": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 0,
+          "fn": 3,
+          "gold_objects": 3,
+          "matched_correct_category": 0,
+          "pixel_mask_comparisons": 0,
+          "predictions": 1,
+          "tp": 0
+        },
+        "reason": "Native Qwen32B grounded its single entity with no stage failures, errors, or prompt-limit overflow, so there is no diagnostic evidence that SAM or DINO refinement is needed, though one box does not tell us whether all reviewed objects are covered or whether the box is accurate.",
+        "stop_state": "escalate_no_correct_category_match",
+        "sum_matched_box_iou": 0.0
+      },
+      "R07": {
+        "action": "sam",
+        "counts": {
+          "category_aware_tp": 3,
+          "fn": 20,
+          "gold_objects": 24,
+          "matched_correct_category": 2,
+          "pixel_mask_comparisons": 0,
+          "predictions": 52,
+          "tp": 4
+        },
+        "reason": "Native grounded all 52 entities but 32 exceeded the 20-entity prompt limit and 2 errored, which suggests a dense scene where Qwen's boxes may be loose, so Qwen→SAM keeps Qwen's coverage while tightening box localization; box quality is still unverified and the DINO stage was not chosen because re-detection could drop entities.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 3.452132541989107
+      },
+      "R08": {
+        "action": "sam",
+        "counts": {
+          "category_aware_tp": 3,
+          "fn": 11,
+          "gold_objects": 15,
+          "matched_correct_category": 3,
+          "pixel_mask_comparisons": 0,
+          "predictions": 49,
+          "tp": 4
+        },
+        "reason": "Native grounded all 49 entities with only 2 errors, so coverage looks good, but counts don't show box precision and 29 entities exceed DINO's 20-entity prompt limit, so refining Qwen's boxes with SAM is the best bet for keeping coverage while improving localization without the truncation risk of the DINO path.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 3.4467060622026375
+      }
+    },
+    "decision_cases": 8,
+    "frames_passing_minimum_evidence": 6,
+    "metrics": {
+      "category_aware_grounding_recall": {
+        "denominator": 132,
+        "numerator": 13,
+        "value": 0.09848484848484848
+      },
+      "conditional_box_iou": {
+        "denominator": 23,
+        "numerator": 19.774364645706,
+        "value": 0.859754984595913
+      },
+      "gold_localization_recall": {
+        "denominator": 132,
+        "numerator": 23,
+        "value": 0.17424242424242425
+      },
+      "gold_support_yield": {
+        "denominator": 200,
+        "numerator": 23,
+        "value": 0.115
+      },
+      "matched_category_agreement": {
+        "denominator": 23,
+        "numerator": 12,
+        "value": 0.5217391304347826
+      }
+    },
+    "new_vision_inference_calls": 0,
+    "run": "agent",
+    "selected_cached_lane_reads": 8
+  },
+  "baseline": {
+    "cases": {
+      "R01": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 0,
+          "fn": 4,
+          "gold_objects": 4,
+          "matched_correct_category": 0,
+          "pixel_mask_comparisons": 0,
+          "predictions": 1,
+          "tp": 0
+        },
+        "reason": "Predeclared fixed policy: retain native Qwen32B boxes.",
+        "stop_state": "escalate_no_correct_category_match",
+        "sum_matched_box_iou": 0.0
+      },
+      "R02": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 3,
+          "fn": 20,
+          "gold_objects": 23,
+          "matched_correct_category": 3,
+          "pixel_mask_comparisons": 0,
+          "predictions": 20,
+          "tp": 3
+        },
+        "reason": "Predeclared fixed policy: retain native Qwen32B boxes.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 2.5912399407913522
+      },
+      "R03": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 0,
+          "fn": 19,
+          "gold_objects": 19,
+          "matched_correct_category": 0,
+          "pixel_mask_comparisons": 0,
+          "predictions": 0,
+          "tp": 0
+        },
+        "reason": "Predeclared fixed policy: retain native Qwen32B boxes.",
+        "stop_state": "escalate_no_correct_category_match",
+        "sum_matched_box_iou": 0.0
+      },
+      "R04": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 1,
+          "fn": 15,
+          "gold_objects": 20,
+          "matched_correct_category": 1,
+          "pixel_mask_comparisons": 0,
+          "predictions": 50,
+          "tp": 5
+        },
+        "reason": "Predeclared fixed policy: retain native Qwen32B boxes.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 3.9580425900658245
+      },
+      "R05": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 2,
+          "fn": 19,
+          "gold_objects": 24,
+          "matched_correct_category": 2,
+          "pixel_mask_comparisons": 0,
+          "predictions": 23,
+          "tp": 5
+        },
+        "reason": "Predeclared fixed policy: retain native Qwen32B boxes.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 4.4298584524101035
+      },
+      "R06": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 0,
+          "fn": 3,
+          "gold_objects": 3,
+          "matched_correct_category": 0,
+          "pixel_mask_comparisons": 0,
+          "predictions": 1,
+          "tp": 0
+        },
+        "reason": "Predeclared fixed policy: retain native Qwen32B boxes.",
+        "stop_state": "escalate_no_correct_category_match",
+        "sum_matched_box_iou": 0.0
+      },
+      "R07": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 3,
+          "fn": 21,
+          "gold_objects": 24,
+          "matched_correct_category": 3,
+          "pixel_mask_comparisons": 0,
+          "predictions": 52,
+          "tp": 3
+        },
+        "reason": "Predeclared fixed policy: retain native Qwen32B boxes.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 2.334949692897813
+      },
+      "R08": {
+        "action": "native",
+        "counts": {
+          "category_aware_tp": 2,
+          "fn": 12,
+          "gold_objects": 15,
+          "matched_correct_category": 2,
+          "pixel_mask_comparisons": 0,
+          "predictions": 49,
+          "tp": 3
+        },
+        "reason": "Predeclared fixed policy: retain native Qwen32B boxes.",
+        "stop_state": "accepted_minimum_evidence",
+        "sum_matched_box_iou": 1.8770726057617209
+      }
+    },
+    "decision_cases": 8,
+    "frames_passing_minimum_evidence": 5,
+    "metrics": {
+      "category_aware_grounding_recall": {
+        "denominator": 132,
+        "numerator": 11,
+        "value": 0.08333333333333333
+      },
+      "conditional_box_iou": {
+        "denominator": 19,
+        "numerator": 15.191163281926814,
+        "value": 0.7995349095750954
+      },
+      "gold_localization_recall": {
+        "denominator": 132,
+        "numerator": 19,
+        "value": 0.14393939393939395
+      },
+      "gold_support_yield": {
+        "denominator": 196,
+        "numerator": 19,
+        "value": 0.09693877551020408
+      },
+      "matched_category_agreement": {
+        "denominator": 19,
+        "numerator": 11,
+        "value": 0.5789473684210527
+      }
+    },
+    "new_vision_inference_calls": 0,
+    "run": "fixed",
+    "selected_cached_lane_reads": 8
+  },
+  "experiment": "Cached Qwen32B routing; development batch.",
+  "measurement": "Independent deterministic aggregation of archived human-Gold one-to-one box checks at IoU >= 0.50. No raw pixels, boxes or masks are present in this experiment.",
+  "paired_frames": {
+    "R01": {
+      "agent_action": "native",
+      "agent_missed_gold": 4,
+      "agent_reason": "The native diagnostics are clean (1 entity grounded, 1 box emitted, no stage failures, errors, or prompt-limit overflow), so there is no observed failure to justify rerouting through SAM or DINO, though a single box count cannot confirm that the box is correctly placed or that every reviewed object is covered.",
+      "baseline_missed_gold": 4,
+      "localizations_gained_or_lost": 0
+    },
+    "R02": {
+      "agent_action": "native",
+      "agent_missed_gold": 20,
+      "agent_reason": "Native Qwen32B grounded all 20 entities with no stage failures, entity errors, or prompt-limit overflow, so nothing points to a failure that SAM or DINO refinement would fix, though these counts alone cannot confirm the boxes are tight or correctly localized.",
+      "baseline_missed_gold": 20,
+      "localizations_gained_or_lost": 0
+    },
+    "R03": {
+      "agent_action": "dino",
+      "agent_missed_gold": 18,
+      "agent_reason": "Native Qwen32B emitted 0 boxes with 0 entities grounded and no errors, so it covers nothing and Qwen→SAM would likely have no Qwen boxes to refine; DINO→SAM is the only option with an independent detector, though zero grounded entities could also mean the frame has nothing to ground, so box quality is unverified until the checker runs.",
+      "baseline_missed_gold": 19,
+      "localizations_gained_or_lost": 1
+    },
+    "R04": {
+      "agent_action": "sam",
+      "agent_missed_gold": 14,
+      "agent_reason": "Native grounded 50 entities, but 30 exceed the 20-entity prompt limit, which would likely truncate the DINO path, so Qwen→SAM keeps native coverage while refining boxes, though box quality is still unverified from counts alone.",
+      "baseline_missed_gold": 15,
+      "localizations_gained_or_lost": 1
+    },
+    "R05": {
+      "agent_action": "native",
+      "agent_missed_gold": 19,
+      "agent_reason": "Native grounded all 23 entities with no stage failures or errors, and the 3 entities above the 20-entity prompt limit make the re-grounding pipelines (especially DINO) more likely to drop objects, though these counts cannot confirm that the native boxes are well localized.",
+      "baseline_missed_gold": 19,
+      "localizations_gained_or_lost": 0
+    },
+    "R06": {
+      "agent_action": "native",
+      "agent_missed_gold": 3,
+      "agent_reason": "Native Qwen32B grounded its single entity with no stage failures, errors, or prompt-limit overflow, so there is no diagnostic evidence that SAM or DINO refinement is needed, though one box does not tell us whether all reviewed objects are covered or whether the box is accurate.",
+      "baseline_missed_gold": 3,
+      "localizations_gained_or_lost": 0
+    },
+    "R07": {
+      "agent_action": "sam",
+      "agent_missed_gold": 20,
+      "agent_reason": "Native grounded all 52 entities but 32 exceeded the 20-entity prompt limit and 2 errored, which suggests a dense scene where Qwen's boxes may be loose, so Qwen→SAM keeps Qwen's coverage while tightening box localization; box quality is still unverified and the DINO stage was not chosen because re-detection could drop entities.",
+      "baseline_missed_gold": 21,
+      "localizations_gained_or_lost": 1
+    },
+    "R08": {
+      "agent_action": "sam",
+      "agent_missed_gold": 11,
+      "agent_reason": "Native grounded all 49 entities with only 2 errors, so coverage looks good, but counts don't show box precision and 29 entities exceed DINO's 20-entity prompt limit, so refining Qwen's boxes with SAM is the best bet for keeping coverage while improving localization without the truncation risk of the DINO path.",
+      "baseline_missed_gold": 12,
+      "localizations_gained_or_lost": 1
+    }
+  },
+  "resource_unit": "One retrieved cached route per policy per frame. This budget excludes original inference costs, model deliberation, and read-only inspection calls.",
+  "semantics": "Category-aware recall uses the archive's separately category-aware match count. Matched category agreement uses the category labels of geometric matches. Support yield is agreement with the reviewed inventory, which is incomplete.",
+  "source": {
+    "archive": "DYLAN_ALL_BRANCHES_BOX_SCORES.zip",
+    "archive_sha256": "502274aacbc211f6d4902acdacdef1bea3f35dad93fa1898e13ff984e2715722",
+    "library_file_id": "libfile_83feacd2e88c8191bb1d443974f8a595",
+    "member": "frame_outcomes.csv",
+    "member_sha256": "f505e659f830845dcb360675f60c18483becebd5d01b1ac0ca4052d017548e67",
+    "underlying_video_campaign": "recovery_20261008_172809_PbxI6G"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "action": "native",
+  "cached_lane_reads": 1,
+  "case": "R05",
+  "committed_utc": "2026-11-15T17:41:21.757203+00:00",
+  "mode": "agent",
+  "observation": {
+    "case": "R05",
+    "initial_native": {
+      "emitted_boxes": 23,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 3,
+        "entity_errors": 0,
+        "entity_grounded": 23
+      }
+    },
+    "review_frame": 1,
+    "scene": "clip_f683f2584f26d212d8f6",
+    "split": "development",
+    "video_frame": 1,
+    "video_id": "e42454af143cd91789f2b72e"
+  },
+  "reason": "Native grounded all 23 entities with no stage failures or errors, and the 3 entities above the 20-entity prompt limit make the re-grounding pipelines (especially DINO) more likely to drop objects, though these counts cannot confirm that the native boxes are well localized.",
+  "result_sha256": "3b4844246384f4f34f773ec662c50d879cc6cb20659c9b07b5cb7efe2d154f1b",
+  "run": "agent",
+  "stop_state": "accepted_minimum_evidence"
+}

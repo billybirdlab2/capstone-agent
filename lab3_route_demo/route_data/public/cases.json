@@ -1,0 +1,156 @@
+{
+  "cases": {
+    "R01": {
+      "case": "R01",
+      "initial_native": {
+        "emitted_boxes": 1,
+        "generator_counts": {
+          "anchors_entity_stage_failed": 0,
+          "entities_above_prompt_limit_20": 0,
+          "entity_errors": 0,
+          "entity_grounded": 1
+        }
+      },
+      "review_frame": 1,
+      "scene": "clip_0c8b65e1d5cd5522fdbe",
+      "split": "development",
+      "video_frame": 1,
+      "video_id": "52f825c46c5830a45738bb97"
+    },
+    "R02": {
+      "case": "R02",
+      "initial_native": {
+        "emitted_boxes": 20,
+        "generator_counts": {
+          "anchors_entity_stage_failed": 0,
+          "entities_above_prompt_limit_20": 0,
+          "entity_errors": 0,
+          "entity_grounded": 20
+        }
+      },
+      "review_frame": 3,
+      "scene": "clip_585e95032c6b458b4e36",
+      "split": "development",
+      "video_frame": 3,
+      "video_id": "1495fc86117ad5b436889d91"
+    },
+    "R03": {
+      "case": "R03",
+      "initial_native": {
+        "emitted_boxes": 0,
+        "generator_counts": {
+          "anchors_entity_stage_failed": 0,
+          "entities_above_prompt_limit_20": 0,
+          "entity_errors": 0,
+          "entity_grounded": 0
+        }
+      },
+      "review_frame": 1,
+      "scene": "clip_b2afbf183ec6582616d2",
+      "split": "development",
+      "video_frame": 1,
+      "video_id": "a5aad3a325ae878944869c85"
+    },
+    "R04": {
+      "case": "R04",
+      "initial_native": {
+        "emitted_boxes": 50,
+        "generator_counts": {
+          "anchors_entity_stage_failed": 0,
+          "entities_above_prompt_limit_20": 30,
+          "entity_errors": 1,
+          "entity_grounded": 50
+        }
+      },
+      "review_frame": 1,
+      "scene": "clip_df7ca56329a117fe757c",
+      "split": "development",
+      "video_frame": 1,
+      "video_id": "f70f93bcf0d04c6d33bbc510"
+    },
+    "R05": {
+      "case": "R05",
+      "initial_native": {
+        "emitted_boxes": 23,
+        "generator_counts": {
+          "anchors_entity_stage_failed": 0,
+          "entities_above_prompt_limit_20": 3,
+          "entity_errors": 0,
+          "entity_grounded": 23
+        }
+      },
+      "review_frame": 1,
+      "scene": "clip_f683f2584f26d212d8f6",
+      "split": "development",
+      "video_frame": 1,
+      "video_id": "e42454af143cd91789f2b72e"
+    },
+    "R06": {
+      "case": "R06",
+      "initial_native": {
+        "emitted_boxes": 1,
+        "generator_counts": {
+          "anchors_entity_stage_failed": 0,
+          "entities_above_prompt_limit_20": 0,
+          "entity_errors": 0,
+          "entity_grounded": 1
+        }
+      },
+      "review_frame": 31,
+      "scene": "clip_0c8b65e1d5cd5522fdbe",
+      "split": "development",
+      "video_frame": 31,
+      "video_id": "52f825c46c5830a45738bb97"
+    },
+    "R07": {
+      "case": "R07",
+      "initial_native": {
+        "emitted_boxes": 52,
+        "generator_counts": {
+          "anchors_entity_stage_failed": 0,
+          "entities_above_prompt_limit_20": 32,
+          "entity_errors": 2,
+          "entity_grounded": 52
+        }
+      },
+      "review_frame": 27,
+      "scene": "clip_585e95032c6b458b4e36",
+      "split": "development",
+      "video_frame": 27,
+      "video_id": "1495fc86117ad5b436889d91"
+    },
+    "R08": {
+      "case": "R08",
+      "initial_native": {
+        "emitted_boxes": 49,
+        "generator_counts": {
+          "anchors_entity_stage_failed": 0,
+          "entities_above_prompt_limit_20": 29,
+          "entity_errors": 2,
+          "entity_grounded": 49
+        }
+      },
+      "review_frame": 22,
+      "scene": "clip_b2afbf183ec6582616d2",
+      "split": "development",
+      "video_frame": 22,
+      "video_id": "a5aad3a325ae878944869c85"
+    }
+  },
+  "lanes": {
+    "dino": "sam_dino:qwen3vl32b",
+    "native": "raw_vlm:qwen3vl32b",
+    "sam": "sam_joint:qwen3vl32b"
+  },
+  "population_common_frames": 39,
+  "population_scenes": 5,
+  "selection": "Require split=development and coverage_state=DONE for all three lanes at the same aligned frame. Sort scenes lexically and frames numerically. Traverse scenes round-robin, choosing the earliest remaining frame from each, until eight are selected. Selection uses no Gold outcome or prediction count.",
+  "source": {
+    "archive": "DYLAN_ALL_BRANCHES_BOX_SCORES.zip",
+    "archive_sha256": "502274aacbc211f6d4902acdacdef1bea3f35dad93fa1898e13ff984e2715722",
+    "library_file_id": "libfile_83feacd2e88c8191bb1d443974f8a595",
+    "member": "frame_outcomes.csv",
+    "member_sha256": "f505e659f830845dcb360675f60c18483becebd5d01b1ac0ca4052d017548e67",
+    "underlying_video_campaign": "recovery_20261008_172809_PbxI6G"
+  }
+}

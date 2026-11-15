@@ -1,0 +1,18 @@
+{
+  "mode": "route",
+  "manual": false,
+  "model_requested": "claude-opus-5-5",
+  "claude_version": "2.1.325 (Claude Code)",
+  "case_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08"
+  ],
+  "budget": "one committed action per case; independent terminal check",
+  "model_interface": "installed Claude Code in print mode, built-in and MCP tools disabled; Python dispatches the selected action"
+}

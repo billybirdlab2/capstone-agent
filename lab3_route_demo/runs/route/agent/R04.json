@@ -1,0 +1,28 @@
+{
+  "action": "sam",
+  "cached_lane_reads": 1,
+  "case": "R04",
+  "committed_utc": "2026-11-15T17:41:12.076047+00:00",
+  "mode": "agent",
+  "observation": {
+    "case": "R04",
+    "initial_native": {
+      "emitted_boxes": 50,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 30,
+        "entity_errors": 1,
+        "entity_grounded": 50
+      }
+    },
+    "review_frame": 1,
+    "scene": "clip_df7ca56329a117fe757c",
+    "split": "development",
+    "video_frame": 1,
+    "video_id": "f70f93bcf0d04c6d33bbc510"
+  },
+  "reason": "Native grounded 50 entities, but 30 exceed the 20-entity prompt limit, which would likely truncate the DINO path, so Qwen\u2192SAM keeps native coverage while refining boxes, though box quality is still unverified from counts alone.",
+  "result_sha256": "752b9a09ab5e3536b8cbbfd142ee9ea71e0c3a9a204c00f672d464dbd7b5fb92",
+  "run": "agent",
+  "stop_state": "accepted_minimum_evidence"
+}

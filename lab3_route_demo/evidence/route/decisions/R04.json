@@ -1,0 +1,80 @@
+{
+  "case": "R04",
+  "observation": {
+    "case": "R04",
+    "initial_native": {
+      "emitted_boxes": 50,
+      "generator_counts": {
+        "anchors_entity_stage_failed": 0,
+        "entities_above_prompt_limit_20": 30,
+        "entity_errors": 1,
+        "entity_grounded": 50
+      }
+    },
+    "review_frame": 1,
+    "scene": "clip_df7ca56329a117fe757c",
+    "split": "development",
+    "video_frame": 1,
+    "video_id": "f70f93bcf0d04c6d33bbc510"
+  },
+  "prompt": "Choose which cached grounding configuration to use for this Dylan development frame. 'native' keeps Qwen32B, 'sam' uses Qwen→SAM, and 'dino' uses Qwen→DINO→SAM. The goal is to cover reviewed objects with correctly grounded boxes. You only see native output counts and generator diagnostics. Make one decision with the information available. Counts alone do not establish box quality.\nYou control one local choose tool. Use only this observation. Return exactly one JSON object with case, choice, reason. The value of choice must be one of the allowed IDs. Write one sentence identifying the evidence or uncertainty behind your action. The executor will commit the choice, run the independent checker and stop this case.\n\n{\n  \"case\": \"R04\",\n  \"observation\": {\n    \"case\": \"R04\",\n    \"initial_native\": {\n      \"emitted_boxes\": 50,\n      \"generator_counts\": {\n        \"anchors_entity_stage_failed\": 0,\n        \"entities_above_prompt_limit_20\": 30,\n        \"entity_errors\": 1,\n        \"entity_grounded\": 50\n      }\n    },\n    \"review_frame\": 1,\n    \"scene\": \"clip_df7ca56329a117fe757c\",\n    \"split\": \"development\",\n    \"video_frame\": 1,\n    \"video_id\": \"f70f93bcf0d04c6d33bbc510\"\n  },\n  \"allowed_choices\": [\n    \"native\",\n    \"sam\",\n    \"dino\"\n  ]\n}",
+  "choice": "sam",
+  "reason": "Native grounded 50 entities, but 30 exceed the 20-entity prompt limit, which would likely truncate the DINO path, so Qwen→SAM keeps native coverage while refining boxes, though box quality is still unverified from counts alone.",
+  "raw_response": "```json\n{\"case\": \"R04\", \"choice\": \"sam\", \"reason\": \"Native grounded 50 entities, but 30 exceed the 20-entity prompt limit, which would likely truncate the DINO path, so Qwen→SAM keeps native coverage while refining boxes, though box quality is still unverified from counts alone.\"}\n```",
+  "model_metadata": {
+    "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2610,
+      "cache_read_input_tokens": 1223,
+      "output_tokens": 475,
+      "output_tokens_details": {
+        "thinking_tokens": 365
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 2610,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 475,
+          "cache_read_input_tokens": 1223,
+          "cache_creation_input_tokens": 2610,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2610
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "duration_ms": 6325,
+    "total_cost_usd": 0.030632599999999996,
+    "modelUsage": {
+      "claude-opus-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 475,
+        "cacheReadInputTokens": 1223,
+        "cacheCreationInputTokens": 2610,
+        "webSearchRequests": 0,
+        "costUSD": 0.030632599999999996,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 365,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 2610,
+        "canonicalModel": "claude-opus-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  }
+}

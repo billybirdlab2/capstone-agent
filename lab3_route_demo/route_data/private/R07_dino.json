@@ -1,0 +1,22 @@
+{
+  "action": "dino",
+  "case": "R07",
+  "counts": {
+    "category_aware_tp": 3,
+    "fn": 21,
+    "gold_objects": 24,
+    "matched_correct_category": 3,
+    "pixel_mask_comparisons": 0,
+    "predictions": 5,
+    "tp": 3
+  },
+  "coverage": "DONE",
+  "geometry": "sam_mask_derived_boxes",
+  "layer": "sam_dino:qwen3vl32b",
+  "review_frame": 27,
+  "scene": "clip_585e95032c6b458b4e36",
+  "split": "development",
+  "sum_matched_box_iou": 2.9498871901045813,
+  "video_frame": 27,
+  "video_id": "1495fc86117ad5b436889d91"
+}
