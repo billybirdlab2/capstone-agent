@@ -43,7 +43,7 @@ citation checker, digest)* / *planned (in-loop repair with retry, predicate stor
 
 **C.3 Demonstration.** Give the Google Slides link (set to "anyone with the link can view" and
 test it in a private window). Also give the exact commands
-(`bash lab3/helios_option_a.sh run` → `python3 run_demo.py route`), the transcript path,
+(on Helios: `bash helios_option_a.sh run` → `python3 run_demo.py route`; files moved by `lab3/mac_sync.sh` because Helios has no git access), the transcript path,
 the repo URL, and the commit hash.
 
 **D. Evaluation.** State the unit scored (object-frame observations; eligible denominator,
